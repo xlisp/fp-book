@@ -1,5 +1,5 @@
 ##### 每天坚持写作,把你的混乱的笔记重新整理成书
-# 《 Functional Ruby, CoffeeScript, JavaScript  》
+# 《 Functional Clojure, Ruby/CoffeeScript, JavaScript  》
 * 第一章: 从有类到无类编程 (noclass.md)
 ```ruby
 1. 类的真相
