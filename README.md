@@ -8,6 +8,8 @@
 * Clojure/ClojureScript 用于Web的前后端开发
 * Emacs Lisp 用于手机上编写Lisp和命令行
 
+--------------------
+
 * 第一章: 从有类到无类编程 (noclass.md)
 ```ruby
 1. 类的真相
