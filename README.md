@@ -1,6 +1,6 @@
 ### 每天坚持写作,把你的混乱的笔记重新整理成书
 
-# 《 Functional Racket/Clojure/EmacsLisp, Ruby/CoffeeScript, JavaScript  》
+# 《 Functional Racket/Clojure/EmacsLisp/CommonLisp, Ruby/CoffeeScript/JavaScript  》
 
 * 对比 Racket, Emacs Lisp, Clojure 学习 http://hyperpolyglot.org/lisp 
 * Racket 用于原型的λ演算,验证概念的可行性,快速失败
