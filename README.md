@@ -8,8 +8,9 @@
 * Emacs Lisp 用于手机上编写Lisp, 命令行zshrc的取代为Elisp, 帮助项目快速开发生成代码
 * Ruby用于生产等项目, 处理Unix字符串, 清洗数据, 爬虫等
 
+-----
 
-- [一. 对比: Racket/Clojure/EmacsLisp/CommonLisp](#%E4%B8%80-%E5%AF%B9%E6%AF%94-racketclojureemacslispcommonlisp)
+- [对比: Racket/Clojure/EmacsLisp/CommonLisp](#%E4%B8%80-%E5%AF%B9%E6%AF%94-racketclojureemacslispcommonlisp)
 
     - [Show Version](#show-version)
     - [Compiler](#compiler)
