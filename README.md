@@ -581,8 +581,8 @@ none
 ```emacs-lisp
 ;; emacs-lisp
 ; parallel assignment:
-(lexical-let ((x 3) (y 4))  (+ x y))
-(lexical-let* ((x 3) (y (* x x)))  (+ x y))
+(lexical-let ((x 3) (y 4))  (+ x y)) ;; 7
+(lexical-let* ((x 3) (y (* x x)))  (+ x y)) ;; 12
 ```
 
 
@@ -602,8 +602,8 @@ none
 (def x 3)
 ```
 ```emacs-lisp
-;; emacs-lisp
-(set 'x 3)
+;; emacs-lisp 即使是一个列表，也是可以作为变量名的
+(set 'x 3) 
 (setq x 3)
 ```
 
@@ -622,7 +622,7 @@ none
 (ns-unmap *ns* 'x)
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 这里是移除变量的操作
 (makunbound 'x)
 ```
 
@@ -703,7 +703,7 @@ nil '()
 (symbol? 'x)
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp p判断类型通常有着一个p
 (symbolp 'x)
 ```
 
@@ -765,11 +765,12 @@ none
 (get (meta x) :desc); none
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 元数据的操作，移除和获取
 (set 'x 13)
+;; get is nil, setf is string
 (setf (get 'x :desc) "unlucky")
-(get 'x :desc)
-(remprop 'x :desc)
+(get 'x :desc) ;; string
+(remprop 'x :desc) ;; 移除元数据就没有字符串了
 ```
 
 
@@ -892,7 +893,7 @@ number? integer?
 rational? float?none none
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 基本上和clisp设计是一样的，类型的判断p
 numberp integerpnone floatpnone none
 ```
 
@@ -1020,7 +1021,7 @@ returns float:
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(expt 2 32)
+(expt 2 32) ;; 0, ?
 ```
 
 
@@ -1076,7 +1077,7 @@ exp log sin cos tan asin acos atan atan
 Math/exp Math/log Math/sin Math/cos Math/tan Math/asin Math/acos Math/atan Math/atan2
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 三角函数的，周期的建模
 exp log sin cos tan asin acos atan atan
 ```
 
@@ -1313,7 +1314,7 @@ arithmetic-shift left shift when 2nd argument positive bitwise-and bitwise-ior b
 bit-shift-left bit-shift-right bit-and bit-or bit-xor bit-not
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 位的操作
 lsh left shift when 2nd argument positive logand logior logxor lognot
 ```
 
@@ -1374,7 +1375,7 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 (string? "foo")
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp p的类型判断
 (stringp "foo")
 ```
 
@@ -1431,7 +1432,7 @@ yes
 \b \t \n \f \r \" \\ \ooo \uhhhh
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 特殊字符如换行
 \b \t \n \f \r \" \\ \ooo \uhhhh \xh - \xhhhhhh \C-x \M-x
 ```
 
@@ -1450,8 +1451,8 @@ yes
 
 ```
 ```emacs-lisp
-;; emacs-lisp
-(string ?f ?o ?o)
+;; emacs-lisp 列表转为字符串
+(string ?f ?o ?o) ;; foo
 ```
 
 
@@ -1527,7 +1528,7 @@ yes
 (.compareTo "foo" "bar")
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 字母的先后排序大小
 (string= "foo" "bar")
 (string< "foo" "bar")
 ```
@@ -1547,7 +1548,7 @@ yes
 (str "foo " "bar " "baz")
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 字符串连接
 (concat "foo " "bar " "baz")
 ```
 
@@ -1566,8 +1567,8 @@ make-string 3 :initial-element #\f)
 (String. (into-array  (. Character TYPE)  (repeat 3 \f)))
 ```
 ```emacs-lisp
-;; emacs-lisp
-(make-string 3 ?f)
+;; emacs-lisp 字符串创建
+(make-string 3 ?f) ;; fff
 ```
 
 
@@ -1609,7 +1610,7 @@ make-string 3 :initial-element #\f)
 ```
 ```emacs-lisp
 ;; emacs-lisp
-; "Foo Bar":
+; "Foo Bar": 类似rails 命名
 (capitalize "foo")
 ```
 
@@ -1668,7 +1669,7 @@ none; see notes for an implementation
 (str "Value: " 8)
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 这里要注意转换为字符串才可以拼接
 (concat  "value: "  (number-to-string 8))
 ```
 
@@ -1710,7 +1711,7 @@ none; see notes for an implementation
 (seq  (.split "foo bar baz"    "[ \t\n]+"))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 这里可以按照正则表达式来切割
 (split-string "foo bar baz")
 ```
 
@@ -1729,8 +1730,8 @@ none; see notes for an implementation
 (reduce #(str %1 " " %2)  '("foo" "bar" "baz"))
 ```
 ```emacs-lisp
-;; emacs-lisp
-(reduce  (lambda (m o) (concat m " " o))  '("foo" "bar" "baz"))
+;; emacs-lisp ruby's inject 求字符串的积分
+(reduce  (lambda (m o) (concat m "_" o))  '("foo" "bar" "baz")) ; "foo_bar_baz"
 ```
 
 
@@ -1769,8 +1770,8 @@ racket:
 (.indexOf "foo bar" "bar")
 ```
 ```emacs-lisp
-;; emacs-lisp
-(search "bar" "foo bar")
+;; emacs-lisp 搜索得到一个数字，说明是存在的，并且知道它所在的位置
+(search "bar" "foo bar") ; 4
 ```
 
 
@@ -1788,7 +1789,7 @@ racket:
 (.substring "foo bar" 4 7)
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 根据位置来拿到字符串
 (substring "foo bar" 4 7)
 ```
 
@@ -1807,7 +1808,7 @@ racket:
 \a \newline \space \backspace \tab ? \formfeed \return ?
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 一些特殊的字符串
 ?a ?\b ?\t ?\n ?\f ?\r ?\" ?\\ ?\ooo ?\uhhhh ?\xh - ?\xhhhhhh ?\C-x ?\M-x
 ```
 
@@ -1831,8 +1832,8 @@ racket:
 (char? \x)
 ```
 ```emacs-lisp
-;; emacs-lisp
-(characterp ?x)
+;; emacs-lisp 这里的问号是代表什么东西呢, char
+(characterp ?x) ; t
 ```
 
 
@@ -1892,8 +1893,8 @@ racket:
 (.charAt "foo" 0)
 ```
 ```emacs-lisp
-;; emacs-lisp
-(aref "foo" 0)
+;; emacs-lisp 这里的应该是不同于环境查找变量
+(aref "foo" 2) ; 0 => 102, 2 => 111
 ```
 
 
@@ -1978,7 +1979,7 @@ regexp:
 (re-find #"bar" "foo bar")
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 这里就像红宝石的 =~
 (string-match "bar" "foo bar")
 ```
 
@@ -2019,7 +2020,7 @@ regexp:
 (.replaceAll "hello hello"  "[^l]l" "XX")
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 这里就像红宝石的gsub
 ?
 (replace-regexp-in-string "[^l]l"  "EL"  "hello hello")
 ```
@@ -2117,7 +2118,7 @@ No dedicated type; a list of 9 values is used:  second: 0-59  minute: 0-59 
 (def dt (new java.util.Date))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 可以通过时间的先后顺序来判断运算，逻辑的先后顺序
 (current-time)
 ```
 
@@ -2352,7 +2353,7 @@ gray|; seconds since Jan 1, 1900:##
 (list? '(1 2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 判断是不是列表
 (listp '(1 2 3))
 ```
 
@@ -2409,7 +2410,7 @@ nil
 (cons 1 '(2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 连接列表
 (cons 1 '(2 3))
 ```
 
@@ -2430,7 +2431,7 @@ nil
 first
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 取列表的第一个
 car
 ```
 
@@ -2452,7 +2453,7 @@ car
 (next '(1 2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 取除了第一个列表
 (cdr '(1 2 3))
 (rest '(1 2 3))
 ```
@@ -2510,7 +2511,7 @@ both evaluate to nil
 (= '(1 2 3) '(1 2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 这里是eq增强版，可以判断整一个列表是不是相同
 (equal '(1 2 3) '(1 2 3))
 ```
 
@@ -2530,7 +2531,7 @@ both evaluate to nil
 (nth '(1 2 3 4) 2)
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp 直接根据列表的位置去取，和clojure一样的
 (nth 2 '(1 2 3 4))
 ```
 
@@ -2569,8 +2570,8 @@ nil
 none
 ```
 ```emacs-lisp
-;; emacs-lisp
-(position 7 '(5 6 7 8))
+;; emacs-lisp 根据值来得到位置所在
+(position 7 '(5 6 7 8)) ; 2
 ```
 
 
@@ -2588,8 +2589,8 @@ none
 (concat '(1 2 3) '(4 5 6))
 ```
 ```emacs-lisp
-;; emacs-lisp
-(append '(1 2 3) '(4 5 6))
+;; emacs-lisp 拼接两个大的列表
+(append '(1 2 3) '(4 5 6)) ; ( 1 2 3 4 5 6)
 ```
 
 
@@ -2626,8 +2627,8 @@ none
 (drop 2 '(1 2 3 4))
 ```
 ```emacs-lisp
-;; emacs-lisp
-(nthcdr 2 '(1 2 3 4))
+;; emacs-lisp 切割部分列表
+(nthcdr 2 '(1 2 3 4)) ; (3 4)
 ```
 
 
@@ -2645,7 +2646,7 @@ none
 (last '(1 2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp first对应的last
 (car (last '(1 2 3)))
 ```
 
@@ -2665,8 +2666,8 @@ none
 (butlast '(1 2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
-(butlast '(1 2 3))
+;; emacs-lisp 对应的rest
+(butlast '(1 2 3)) ; (2 3)
 ```
 
 
@@ -2722,7 +2723,7 @@ none
 
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp, uniq
 (remove-duplicates '(1 1 2 3))
 ```
 
@@ -2741,8 +2742,8 @@ none
 
 ```
 ```emacs-lisp
-;; emacs-lisp
-(member 7 '(1 2 3)
+;; emacs-lisp ??? ====
+(member 7 '(2 2 3)) ;nil
 ```
 
 
