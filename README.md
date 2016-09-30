@@ -9,7 +9,8 @@
 * Ruby用于生产等项目, 处理Unix字符串, 清洗数据, 爬虫等
 
 
-    - [一. 对比: Racket/Clojure/EmacsLisp/CommonLisp](#%E4%B8%80-%E5%AF%B9%E6%AF%94-racketclojureemacslispcommonlisp)
+- [一. 对比: Racket/Clojure/EmacsLisp/CommonLisp](#%E4%B8%80-%E5%AF%B9%E6%AF%94-racketclojureemacslispcommonlisp)
+
     - [Show Version](#show-version)
     - [Compiler](#compiler)
     - [Standalone Executable](#standalone-executable)
