@@ -1,4 +1,4 @@
-**每天坚持写作, 把混乱的博客笔记, 重新整理成书**
+*每天坚持写作, 把混乱的博客笔记, 重新整理成书*
 
 # 《 Functional Racket/Clojure/EmacsLisp/CommonLisp, Ruby/CoffeeScript/JavaScript  》
 
