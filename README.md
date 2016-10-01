@@ -2877,7 +2877,7 @@ none
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(some  (lambda (i) (= 0 (% i 2)))  '(1 2 3 4))
+(some  (lambda (i) (= 0 (% i 2)))  '(1 2 3 4)) ; t
 ```
 
 
@@ -2937,8 +2937,8 @@ none
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(setq a '(1 2 3)
-(setcar a 3)
+(setq a '(1 2 6 4 5))
+(setcar a 3) ; 3, (3 2 7 4 5)
 ```
 
 
