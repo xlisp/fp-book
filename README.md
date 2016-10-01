@@ -2761,8 +2761,9 @@ none
 (map #(* % %) '(1 2 3))
 ```
 ```emacs-lisp
-;; emacs-lisp
-(mapcar  (lambda (x) (* x x))  '(1 2 3))
+;; emacs-lisp , mapcar is c code
+;; (-map (lambda (x) (* x x))  '(1 2 3)) ;; dash
+(mapcar  (lambda (x) (* x x))  '(1 2 3)) ;; (1 4 9)
 ```
 
 
@@ -2780,7 +2781,7 @@ none
 (filter #(> % 2) '(1 2 3)); remove returns complement
 ```
 ```emacs-lisp
-;; emacs-lisp
+;; emacs-lisp, ruby select
 (remove-if-not  (lambda (x) (> x 2))  '(1 2 3)); remove-if returns complement
 ```
 
@@ -2800,7 +2801,7 @@ none
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(reduce '-  '(1 2 3 4)  :initial-value 0)
+(reduce '-  '(1 2 3 4)  :initial-value 0) ; -10
 ```
 
 
@@ -2819,7 +2820,7 @@ none
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(reduce '-  '(1 2 3 4)  :initial-value 0  :from-end t)
+(reduce '-  '(1 2 3 4)  :initial-value 0  :from-end t) ;; -2
 ```
 
 
@@ -2838,7 +2839,7 @@ none
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(dolist (x '(1 2 3))  (print x)  (print (- x)))
+(dolist (x '(1 2 3))  (print x)  (print (- x))) ;; doseq
 ```
 
 
