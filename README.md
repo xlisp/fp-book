@@ -3772,7 +3772,9 @@ yes
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(defun add (a &optional b)  (if (null b) a (+ a b)))
+(defun add (a &optional b)  (if (null b) a (+ a b))) ;; like ruby *args
+(add 1) ; 1
+(add 1 2) ; 2
 ```
 
 
@@ -3792,6 +3794,8 @@ yes
 ```emacs-lisp
 ;; emacs-lisp
 (defun add (a &rest b)  (if (null b)    a    (+ a (eval (cons '+ b)))))
+(add 1) ; 1
+(add 1 2) ; 3
 ```
 
 
