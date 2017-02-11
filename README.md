@@ -1,6 +1,6 @@
 *每天坚持博客总结写作, 把混乱的博客笔记, 重新整理成规范书*
 
-# 《 Functional Racket/Clojure/EmacsLisp/CommonLisp, Ruby/CoffeeScript/JavaScript  》
+# 《 Functional Racket/Clojure/EmacsLisp/CommonLisp 》
 
 * 对比学习 Racket, Clojure, Emacs Lisp, Common Lisp
 * Racket 用于原型的λ快速演算, 宏系统解析语法和自定义解释器, 验证概念的可行性, 快速失败
