@@ -497,8 +497,8 @@ whitespace
 
 #### Multiple Line Comment
 ```common-lisp
-;; common-lisp
-(+ 1 #| adding |# 1)
+;; common-lisp 和 emacs-lisp的区别, clisp 可以行中间注释, elisp不可以
+(+ 1 #| adding |# 1) ;;=> 2
 ```
 ```racket
 ;; racket
@@ -542,8 +542,8 @@ SP ( ) " , ' ` ; # | \ _ [ ]
 #### Quoted Identifierand Escaped Identifier
 ```common-lisp
 ;; common-lisp
-(setq |white space symbol| 3)
-(setq white\ space\ symbol 3)
+(setq |white space symbol| 3) ;;=> 3
+(setq white\ space\ symbol 3) ;; 
 ```
 ```racket
 ;; racket
@@ -565,8 +565,8 @@ none
 ```common-lisp
 ;; common-lisp
 ; parallel assignment:
-(let ((x 3) (y 4))  (+ x y)); sequential assignment:
-(let* ((x 3) (y (* x x)))  (+ x y))
+(let ((x 3) (y 4)) (+ x y)) ; sequential assignment: 7
+(let* ((x 3) (y (* x x))) (+ x y)) ;;=> 12
 ```
 ```racket
 ;; racket
@@ -591,7 +591,7 @@ none
 #### Global Variable
 ```common-lisp
 ;; common-lisp
-(defparameter *x* 3); doesn't change x if already set:
+(defparameter *x* 3) ;; doesn't change x if already set, *X* => 3 , (setq *X* 312312) => *X* 还是312312?
 (defvar *x* 3)
 ```
 ```racket
@@ -613,7 +613,7 @@ none
 #### Remove Variable
 ```common-lisp
 ;; common-lisp
-(makunbound 'x)
+(makunbound 'x) ;; (makunbound '*X*) 去除变量值
 ```
 ```racket
 ;; racket
@@ -652,7 +652,7 @@ nil '()
 #### Null Test
 ```common-lisp
 ;; common-lisp
-(null x)
+(null x) ;; x 为nil时, 结果为T. 否则为NIL
 ```
 ```racket
 ;; racket
@@ -672,7 +672,7 @@ nil '()
 ```common-lisp
 ;; common-lisp
 'x
-(quote x)
+(quote x) ;; (= (quote x) 'X) ? ==> = 只能是数字
 ```
 ```racket
 ;; racket
@@ -694,7 +694,7 @@ nil '()
 #### Identifier Test
 ```common-lisp
 ;; common-lisp
-(symbolp 'x)
+(symbolp 'x) ;; T 判断是否为symbol类型
 ```
 ```racket
 ;; racket
@@ -713,7 +713,7 @@ nil '()
 #### Identifier Equality Test
 ```common-lisp
 ;; common-lisp
-(eq 'x 'x)
+(eq 'x 'x) ;; => (eq (quote x) 'x) => T, eq通常用于测试是否相等的表达式,=测试是否相等的数字
 ```
 ```racket
 ;; racket
@@ -732,7 +732,7 @@ nil '()
 #### Non Referential Identifier
 ```common-lisp
 ;; common-lisp
-:foo
+:foo ;;=> :FOO
 ```
 ```racket
 ;; racket
@@ -752,9 +752,9 @@ nil '()
 ```common-lisp
 ;; common-lisp
 (set 'x 13)
-(setf (get 'x :desc) "unlucky")
+(setf (get 'x :desc) #|这里测试是NIL|# "unlucky") ;;=> 结果输出unlucky, (get 'x :desc)变成了unlucky, setf 给:desc属性赋值为unlucky
 (get 'x :desc)
-(remprop 'x :desc)
+(remprop 'x :desc) ;;=> (:DESC "unlucky"), :desc属性去除后为零了
 ```
 ```racket
 ;; racket
@@ -779,7 +779,7 @@ none
 #### True And False
 ```common-lisp
 ;; common-lisp
-t nil
+t nil ;;=> T, NIL
 ```
 ```racket
 ;; racket
@@ -818,7 +818,7 @@ nil ()
 #### Logical Operators
 ```common-lisp
 ;; common-lisp
-(or (not t) (and t nil))
+(or (not t) #|输出NIL|# (and t nil) #|输出NIL|#) ;;=> NIL
 ```
 ```racket
 ;; racket
@@ -856,8 +856,8 @@ nil ()
 #### Min And Max
 ```common-lisp
 ;; common-lisp
-(min 1 2 3)
-(max 1 2 3)
+(min 1 2 3) ;;=> 1
+(max 1 2 3) ;;=> 3
 ```
 ```racket
 ;; racket
@@ -878,7 +878,7 @@ nil ()
 
 #### Numeric Predicates
 ```common-lisp
-;; common-lisp
+;; common-lisp 数值和浮点型判断
 numberp integerp
 rationalp floatp
 realp complexp
@@ -922,8 +922,8 @@ numberp integerpnone floatpnone none
 #### Integer Divisionand Remainder
 ```common-lisp
 ;; common-lisp
-(truncate 7 3)
-(rem 7 3)
+(truncate 7 3) ;;=> 2, 1
+(rem 7 3) ;;=> 1
 ```
 ```racket
 ;; racket
@@ -965,8 +965,8 @@ arith-error
 ```common-lisp
 ;; common-lisp
 rational:
-(/ 7 3)float:
-(/ 7 (* 3 1.0))
+(/ 7 3) ;;=> float: => 7/3 (2.3333333) ;;;=> (= (/ 7 3) 2) => NIL
+(/ 7 (* 3 1.0)) ;; =>  2.3333333
 ```
 ```racket
 ;; racket
@@ -1010,7 +1010,7 @@ division-by-zero error
 #### Power
 ```common-lisp
 ;; common-lisp
-(expt 2 32)
+(expt 2 32) ;;=> => 4294967296 (33 bits, #x100000000, #o40000000000, #b100000000000000000000000000000000)
 ```
 ```racket
 ;; racket
@@ -1030,7 +1030,7 @@ returns float:
 #### Sqrt
 ```common-lisp
 ;; common-lisp
-(sqrt 2)
+(sqrt 2) ;;=> => 1.4142135 
 ```
 ```racket
 ;; racket
@@ -1049,7 +1049,7 @@ returns float:
 #### Sqrt  1
 ```common-lisp
 ;; common-lisp
-#c(0.0 1.0)
+#c(0.0 1.0)
 ```
 ```racket
 ;; racket
@@ -1068,7 +1068,7 @@ returns float:
 #### Transcendental Functions
 ```common-lisp
 ;; common-lisp
-exp log sin cos tan asin acos atan atan
+exp log sin cos tan asin acos atan atan ;;=> 周期函数,声波的机器学习,傅里叶分析
 ```
 ```racket
 ;; racket
@@ -1169,7 +1169,7 @@ not literals:
 #### Rational Construction
 ```common-lisp
 ;; common-lisp
-(/ 3 7); literal:
+(/ 3 7); literal:
 3/7
 ```
 ```racket
@@ -1193,8 +1193,8 @@ not literals:
 #### Rational Decomposition
 ```common-lisp
 ;; common-lisp
-(numerator 3/7)
-(denominator 3/7)
+(numerator 3/7) ;;=> 3
+(denominator 3/7) ;;=> 7
 ```
 ```racket
 ;; racket
@@ -1215,7 +1215,7 @@ none none
 #### Complex Construction
 ```common-lisp
 ;; common-lisp
-#c(1 2)
+#c(1 2) ;;=> ??
 ```
 ```racket
 ;; racket
@@ -1235,11 +1235,11 @@ none
 #### Complex Decomposition
 ```common-lisp
 ;; common-lisp
-(realpart #c(1 2))
-(imagpart #c(1 2))
-(phase #c(1 2))
-(abs #c(1 2))
-(conjugate #c(1 2))
+(realpart #c(1 2)) ;; => 1
+(imagpart #c(1 2)) ;;=> 2
+(phase #c(1 2)) ;;=> 1.1071488
+(abs #c(1 2)) ;;=> 2.236068
+(conjugate #c(1 2)) ;;=> #C(1 -2)
 ```
 ```racket
 ;; racket
@@ -1262,8 +1262,8 @@ none none
 #### Random Numberuniform Integer Uniform Float Normal Float
 ```common-lisp
 ;; common-lisp
-(random 100)
-(random 1.0)none
+(random 100) ;; => 92
+(random 1.0) ;; => 0.6700171
 ```
 ```racket
 ;; racket
@@ -1279,7 +1279,7 @@ none none
 ```
 ```emacs-lisp
 ;; emacs-lisp
-(random 100)nonenone
+(random 100)
 ```
 
 
@@ -1304,7 +1304,7 @@ none none
 
 #### Bit Operators
 ```common-lisp
-;; common-lisp
+;; common-lisp 位运算
 ash left shift when 2nd argument positive logand logior logxor lognot
 ```
 ```racket
@@ -1324,9 +1324,9 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 #### Binary Octal And Hex Literals
 ```common-lisp
 ;; common-lisp
-#b101010
-#o52
-#x2a
+#b101010 ;; => 42 (6 bits, #x2A, #o52, #b101010)
+#o52 ;;=> 42 (6 bits, #x2A, #o52, #b101010)
+#x2a ;;=> 42 (6 bits, #x2A, #o52, #b101010) 
 ```
 ```racket
 ;; racket
@@ -1347,7 +1347,7 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 #### Radix
 ```common-lisp
 ;; common-lisp
-(format nil "~7r" 42)
+(format nil "~7r" 42) ;;=> "60"
 ```
 ```racket
 ;; racket
@@ -1366,7 +1366,7 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 #### String Test
 ```common-lisp
 ;; common-lisp
-(stringp "foo")
+(stringp "foo") ;;=> T, (symbolp :abc)=> T
 ```
 ```racket
 ;; racket
@@ -1423,7 +1423,7 @@ yes
 #### Literal Escapes
 ```common-lisp
 ;; common-lisp
-\" \\
+\" \\ ;; 特殊字符反引号
 ```
 ```racket
 ;; racket
@@ -1460,8 +1460,8 @@ yes
 
 #### Format String
 ```common-lisp
-;; common-lisp
-(format nil "~a: ~a ~,2f" "Foo" 7 13.457)
+;; common-lisp "~,2f" 是浮点型的format
+(format nil "~a: ~a ~,2f" "Foo" 7 13.457) ;;=> "Foo: 7 13.46"
 ```
 ```racket
 ;; racket
@@ -1479,7 +1479,7 @@ yes
 
 #### Format Specifiers
 ```common-lisp
-;; common-lisp
+;; common-lisp 各种类型的Format填充方法
 ~a    any type, human readable
 ~s    any time, read parseable
 ~%    newline
@@ -1516,8 +1516,8 @@ yes
 #### Compare Strings
 ```common-lisp
 ;; common-lisp
-(string= "foo" "bar")
-(string< "foo" "bar")
+(string= "foo" "bar") ;;=> NIL ,字符串比较是否相同
+(string< "foo" "bar") ;;=> NIL
 ```
 ```racket
 ;; racket
@@ -1537,9 +1537,9 @@ yes
 
 
 #### Concatenate
-```common-lisp
-;; common-lisp
-(concatenate 'string "foo " "bar " "bar")
+```common-lisp 
+;; common-lisp 字符串连接
+(concatenate 'string "foo " "bar " "bar") ;;=> "foo bar bar" ,, (concatenate 'string 1 2 3) 是报错的
 ```
 ```racket
 ;; racket
@@ -1558,7 +1558,7 @@ yes
 #### Replicate
 ```common-lisp
 ;; common-lisp
-make-string 3 :initial-element #\f)
+(make-string 3 :initial-element #\f) ;;=> "fff"
 ```
 ```racket
 ;; racket
@@ -1577,7 +1577,7 @@ make-string 3 :initial-element #\f)
 #### Translate Case
 ```common-lisp
 ;; common-lisp
-(string-downcase "FOO")
+(string-downcase "FOO") ;;=> "foo"
 (string-upcase "foo")
 ```
 ```racket
@@ -1600,7 +1600,7 @@ make-string 3 :initial-element #\f)
 ```common-lisp
 ;; common-lisp
 ; "Foo Bar":
-(string-capitalize "foo bar")
+(string-capitalize "foo bar") ;;=> "Foo Bar", 驼峰
 ```
 ```racket
 ;; racket
@@ -1620,7 +1620,7 @@ make-string 3 :initial-element #\f)
 #### Trim
 ```common-lisp
 ;; common-lisp
-(string-trim  '(#\space #\tab #\newline)  " foo ")
+(string-trim '(#\space #\tab #\newline) " foo ") ;;=> "foo" 去除一些字符串
 ```
 ```racket
 ;; racket
@@ -1640,8 +1640,8 @@ none; see notes for an implementation
 #### Padon Right On Left
 ```common-lisp
 ;; common-lisp
-(format nil "~10a" "foo")
-(format nil "~10@a" "foo")
+(format nil "~10a" "foo") ;; => "foo       "
+(format nil "~10@a" "foo") ;;=> "       foo"
 ```
 ```racket
 ;; racket
@@ -1660,7 +1660,7 @@ none; see notes for an implementation
 #### Number To String
 ```common-lisp
 ;; common-lisp
-(concatenate 'string  "value: "  (princ-to-string 8))
+(concatenate 'string "value: " (princ-to-string 8)) ;;=> "value: 8"
 ```
 ```racket
 ;; racket
@@ -1679,8 +1679,8 @@ none; see notes for an implementation
 #### String To Number
 ```common-lisp
 ;; common-lisp
-(+ 7 (parse-integer "12"))
-(+ 73.9 (read-from-string ".037"))
+(+ 7 (parse-integer "12")) ;;=> 19 (5 bits, #x13, #o23, #b10011)
+(+ 73.9 (read-from-string ".037") #|输出=> 0.037, 4|#) ;;=> 73.937004
 ```
 ```racket
 ;; racket
@@ -1702,7 +1702,7 @@ none; see notes for an implementation
 #### Split
 ```common-lisp
 ;; common-lisp
-(cl-ppcre:split  "[ \t\n]+"  "foo bar baz")
+(cl-ppcre:split "[ \t\n]+" "foo bar baz") ;; 必须要安装包=> Package CL-PPCRE does not exist.
 ```
 ```racket
 ;; racket
@@ -1720,8 +1720,8 @@ none; see notes for an implementation
 
 #### String Join
 ```common-lisp
-;; common-lisp
-(reduce  (lambda (m o)    (concatenate 'string m " " o))  '("foo" "bar" "baz"))
+;; common-lisp reduce累加的字符串
+(reduce (lambda (m o) (concatenate 'string m " " o)) '("foo" "bar" "baz")) ;;=> "foo bar baz"
 ```
 ```racket
 ;; racket
@@ -1733,14 +1733,14 @@ none; see notes for an implementation
 ```
 ```emacs-lisp
 ;; emacs-lisp ruby's inject 求字符串的积分
-(reduce  (lambda (m o) (concat m "_" o))  '("foo" "bar" "baz")) ; "foo_bar_baz"
+(reduce (lambda (m o) (concat m "_" o)) '("foo" "bar" "baz")) ; "foo_bar_baz"
 ```
 
 
 #### Length
 ```common-lisp
 ;; common-lisp
-(length "foo")
+(length "foo") ;;=> 3 (2 bits, #x3, #o3, #b11)
 ```
 ```racket
 ;; racket
@@ -1759,7 +1759,7 @@ none; see notes for an implementation
 #### Index Of Substring
 ```common-lisp
 ;; common-lisp
-(search "bar" "foo bar")
+(search "bar" "foo bar") ;;=> 4 (3 bits, #x4, #o4, #b100)
 ```
 ```racket
 ;; racket
