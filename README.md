@@ -1,13 +1,4 @@
-*每天坚持博客总结写作, 把混乱的博客笔记, 重新整理成规范书*
-
 # 《 Functional Racket/Clojure/EmacsLisp/CommonLisp 》
-
-* 对比学习 Racket, Clojure, Emacs Lisp, Common Lisp
-* Racket 用于原型的λ快速演算, 宏系统解析语法和自定义解释器, 验证概念的可行性, 快速失败
-* Clojure/ClojureScript 用于Web的前后端开发, 大数据Stom, 科学计算和机器学习weka
-* Emacs Lisp 用于手机上编写Lisp, 命令行zshrc的取代为Elisp, 帮助项目快速开发生成代码
-* Ruby用于生产等项目, 处理Unix字符串, 清洗数据, 爬虫等
-
 -----
 
 *Declaration: Content forked form the http://hyperpolyglot.org/lisp, only for compare study lisp and record learning experience*
