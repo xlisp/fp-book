@@ -1,6 +1,8 @@
 # 《 Functional Racket/Clojure/EmacsLisp/CommonLisp 》
 -----
 
+### 对比学习Racket/Clojure/EmacsLisp/CommonLisp, 以及基本算法
+
 *Declaration: Content forked form the http://hyperpolyglot.org/lisp, only for compare study lisp and record learning experience*
 
 - [对比: Racket/Clojure/EmacsLisp/CommonLisp](#%E4%B8%80-%E5%AF%B9%E6%AF%94-racketclojureemacslispcommonlisp)
