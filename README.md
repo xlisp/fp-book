@@ -1,321 +1,11 @@
 # 《 Functional Racket/Clojure/EmacsLisp/CommonLisp 》
------
 
-### 对比学习Racket/Clojure/EmacsLisp/CommonLisp, 以及基本算法
+## 对比学习Racket/Clojure/EmacsLisp/CommonLisp, 以及基本算法
 
 *Declaration: Content forked form the http://hyperpolyglot.org/lisp, only for compare study lisp and record learning experience*
 
-- [对比: Racket/Clojure/EmacsLisp/CommonLisp](#%E4%B8%80-%E5%AF%B9%E6%AF%94-racketclojureemacslispcommonlisp)
+## Show Version
 
-    - [Show Version](#show-version)
-    - [Compiler](#compiler)
-    - [Standalone Executable](#standalone-executable)
-    - [Interpreter](#interpreter)
-    - [Shebang](#shebang)
-    - [Repl](#repl)
-    - [Command Line Program](#command-line-program)
-    - [Word Separator](#word-separator)
-    - [End Of Line Comment](#end-of-line-comment)
-    - [Multiple Line Comment](#multiple-line-comment)
-    - [Identifier](#identifier)
-    - [Quoted Identifierand Escaped Identifier](#quoted-identifierand-escaped-identifier)
-    - [Local Variable](#local-variable)
-    - [Global Variable](#global-variable)
-    - [Remove Variable](#remove-variable)
-    - [Null](#null)
-    - [Null Test](#null-test)
-    - [Identifier As Value](#identifier-as-value)
-    - [Identifier Test](#identifier-test)
-    - [Identifier Equality Test](#identifier-equality-test)
-    - [Non Referential Identifier](#non-referential-identifier)
-    - [Identifier Attributesset Get Remove](#identifier-attributesset-get-remove)
-    - [True And False](#true-and-false)
-    - [Falsehoods](#falsehoods)
-    - [Logical Operators](#logical-operators)
-    - [Relational Operators](#relational-operators)
-    - [Min And Max](#min-and-max)
-    - [Numeric Predicates](#numeric-predicates)
-    - [Arithmetic Operators](#arithmetic-operators)
-    - [Integer Divisionand Remainder](#integer-divisionand-remainder)
-    - [Integer Division By Zero](#integer-division-by-zero)
-    - [Float Division](#float-division)
-    - [Float Division By Zero](#float-division-by-zero)
-    - [Power](#power)
-    - [Sqrt](#sqrt)
-    - [Sqrt  1](#sqrt--1)
-    - [Transcendental Functions](#transcendental-functions)
-    - [Float Truncation](#float-truncation)
-    - [Absolute Valueand Signum](#absolute-valueand-signum)
-    - [Integer Overflow](#integer-overflow)
-    - [Float Overflow](#float-overflow)
-    - [Rational Construction](#rational-construction)
-    - [Rational Decomposition](#rational-decomposition)
-    - [Complex Construction](#complex-construction)
-    - [Complex Decomposition](#complex-decomposition)
-    - [Random Numberuniform Integer Uniform Float Normal Float](#random-numberuniform-integer-uniform-float-normal-float)
-    - [Random Seed](#random-seed)
-    - [Bit Operators](#bit-operators)
-    - [Binary Octal And Hex Literals](#binary-octal-and-hex-literals)
-    - [Radix](#radix)
-    - [String Test](#string-test)
-    - [String Literal](#string-literal)
-    - [Newline In Literal](#newline-in-literal)
-    - [Literal Escapes](#literal-escapes)
-    - [Constructor](#constructor)
-    - [Format String](#format-string)
-    - [Format Specifiers](#format-specifiers)
-    - [Compare Strings](#compare-strings)
-    - [Concatenate](#concatenate)
-    - [Replicate](#replicate)
-    - [Translate Case](#translate-case)
-    - [Capitalize](#capitalize)
-    - [Trim](#trim)
-    - [Padon Right On Left](#padon-right-on-left)
-    - [Number To String](#number-to-string)
-    - [String To Number](#string-to-number)
-    - [Split](#split)
-    - [String Join](#string-join)
-    - [Length](#length)
-    - [Index Of Substring](#index-of-substring)
-    - [Extract Substring](#extract-substring)
-    - [Character Literal](#character-literal)
-    - [Test Characters](#test-characters)
-    - [Chr And Ord](#chr-and-ord)
-    - [To Array Of Characters](#to-array-of-characters)
-    - [Character Lookup](#character-lookup)
-    - [Literal](#literal)
-    - [Character Class Abbrevations](#character-class-abbrevations)
-    - [Anchors](#anchors)
-    - [Match Test](#match-test)
-    - [Case Insensitive Match Test](#case-insensitive-match-test)
-    - [Substitution](#substitution)
-    - [Group Capture](#group-capture)
-    - [Scan](#scan)
-    - [Backreference In Match And Substitution](#backreference-in-match-and-substitution)
-    - [Broken Down Datetime Type](#broken-down-datetime-type)
-    - [Current Datetime](#current-datetime)
-    - [Current Unix Epoch](#current-unix-epoch)
-    - [Unix Epoch To Broken Down Datetime](#unix-epoch-to-broken-down-datetime)
-    - [Broken Down Datetime To Unix Epoch](#broken-down-datetime-to-unix-epoch)
-    - [Format Datetime](#format-datetime)
-    - [Parse Datetime](#parse-datetime)
-    - [Date Parts](#date-parts)
-    - [Time Parts](#time-parts)
-    - [Build Broken Down Datetime](#build-broken-down-datetime)
-    - [Literal](#literal-1)
-    - [Constructor](#constructor-1)
-    - [Predicate](#predicate)
-    - [Empty Test](#empty-test)
-    - [Evaluating The Empty List](#evaluating-the-empty-list)
-    - [Cons](#cons)
-    - [Head](#head)
-    - [Tail](#tail)
-    - [Head And Tail Of Empty List](#head-and-tail-of-empty-list)
-    - [Length](#length-1)
-    - [Equality Test](#equality-test)
-    - [Nth Element](#nth-element)
-    - [Out Of Bounds Behavior](#out-of-bounds-behavior)
-    - [Element Index](#element-index)
-    - [Concatenate](#concatenate-1)
-    - [Take](#take)
-    - [Drop](#drop)
-    - [Last Element](#last-element)
-    - [All But Last Element](#all-but-last-element)
-    - [Reverse](#reverse)
-    - [Sort](#sort)
-    - [Dedupe](#dedupe)
-    - [Membership](#membership)
-    - [Map](#map)
-    - [Filter](#filter)
-    - [Reduce](#reduce)
-    - [Right Fold](#right-fold)
-    - [Iterate](#iterate)
-    - [Universal Predicate](#universal-predicate)
-    - [Existential Predicate](#existential-predicate)
-    - [List Comprehension](#list-comprehension)
-    - [Shuffle](#shuffle)
-    - [Set Head](#set-head)
-    - [Set Tail](#set-tail)
-    - [Manipulate Back](#manipulate-back)
-    - [Flatten](#flatten)
-    - [Associative Array Lookup](#associative-array-lookup)
-    - [Flat Associative Array Lookup](#flat-associative-array-lookup)
-    - [Pair Literal](#pair-literal)
-    - [Cons Cell Test](#cons-cell-test)
-    - [Translate Elements Recursively](#translate-elements-recursively)
-    - [Literal](#literal-2)
-    - [Constructor](#constructor-2)
-    - [Size](#size)
-    - [Lookup](#lookup)
-    - [Update](#update)
-    - [Out Of Bounds Behavior](#out-of-bounds-behavior-1)
-    - [Array To List](#array-to-list)
-    - [List To Array](#list-to-array)
-    - [Reverse](#reverse-1)
-    - [Sort](#sort-1)
-    - [Map](#map-1)
-    - [Filter](#filter-1)
-    - [Reduce](#reduce-1)
-    - [Literal](#literal-3)
-    - [Constructor](#constructor-3)
-    - [Predicate](#predicate-1)
-    - [Size](#size-1)
-    - [Lookup](#lookup-1)
-    - [Update](#update-1)
-    - [Missing Key Behavior](#missing-key-behavior)
-    - [Is Key Present](#is-key-present)
-    - [Delete](#delete)
-    - [Merge](#merge)
-    - [Invert](#invert)
-    - [Iterate](#iterate-1)
-    - [Keys And Values As Lists](#keys-and-values-as-lists)
-    - [Defstruct](#defstruct)
-    - [Struct](#struct)
-    - [Struct Getter](#struct-getter)
-    - [Struct Setter](#struct-setter)
-    - [Struct Predicate](#struct-predicate)
-    - [Define Function](#define-function)
-    - [Can Function And Variable Share Name](#can-function-and-variable-share-name)
-    - [Optional Argument](#optional-argument)
-    - [Variable Number Of Arguments](#variable-number-of-arguments)
-    - [Default Value](#default-value)
-    - [Named Parameter](#named-parameter)
-    - [Return Multiple Values](#return-multiple-values)
-    - [Assign Multiple Values To Local Variables](#assign-multiple-values-to-local-variables)
-    - [Assign Multiple Values To Global Variables](#assign-multiple-values-to-global-variables)
-    - [Convert List To Multiple Values](#convert-list-to-multiple-values)
-    - [Assign Multiple Values To List](#assign-multiple-values-to-list)
-    - [Tail Call Optimization](#tail-call-optimization)
-    - [Lambda](#lambda)
-    - [Apply](#apply)
-    - [Progn](#progn)
-    - [Loop](#loop)
-    - [Do](#do)
-    - [Dotimes](#dotimes)
-    - [If](#if)
-    - [When](#when)
-    - [Cond](#cond)
-    - [Lazy Evaluation](#lazy-evaluation)
-    - [Continuations](#continuations)
-    - [Error](#error)
-    - [Handle Error](#handle-error)
-    - [Define Exception](#define-exception)
-    - [Throw Exception](#throw-exception)
-    - [Catch Exception](#catch-exception)
-    - [Restart Case](#restart-case)
-    - [Invoke Restart](#invoke-restart)
-    - [Finally Clause](#finally-clause)
-    - [Standard File Handles](#standard-file-handles)
-    - [End Of File Behavior](#end-of-file-behavior)
-    - [Read Line From Stdin](#read-line-from-stdin)
-    - [Chomp](#chomp)
-    - [Write Line To Stdout](#write-line-to-stdout)
-    - [Write Formatted String To Stdout](#write-formatted-string-to-stdout)
-    - [Open File For Reading](#open-file-for-reading)
-    - [Open File For Writing](#open-file-for-writing)
-    - [Open File For Appending](#open-file-for-appending)
-    - [Close File](#close-file)
-    - [Close File Implicitly](#close-file-implicitly)
-    - [Read Line](#read-line)
-    - [Iterate Over File By Line](#iterate-over-file-by-line)
-    - [Read File Into Array Of Strings](#read-file-into-array-of-strings)
-    - [Read File Into String](#read-file-into-string)
-    - [Write String](#write-string)
-    - [Write Line](#write-line)
-    - [Flush File Handle](#flush-file-handle)
-    - [File Handle Positionget Set](#file-handle-positionget-set)
-    - [In Memory Stream](#in-memory-stream)
-    - [List Buffers](#list-buffers)
-    - [Current Bufferget And Set](#current-bufferget-and-set)
-    - [Clear Buffer](#clear-buffer)
-    - [Pointget And Set](#pointget-and-set)
-    - [Search And Set Point](#search-and-set-point)
-    - [Insert At String Point](#insert-at-string-point)
-    - [Current Buffer As String](#current-buffer-as-string)
-    - [Insert File Contents At Point](#insert-file-contents-at-point)
-    - [Markget And Set](#markget-and-set)
-    - [File Test Regular File Test](#file-test-regular-file-test)
-    - [File Size](#file-size)
-    - [Is File Readable Writable Executable](#is-file-readable-writable-executable)
-    - [Set File Permissions](#set-file-permissions)
-    - [Last Modification Time](#last-modification-time)
-    - [Copy File Remove File Rename File](#copy-file-remove-file-rename-file)
-    - [Create Symlink Symlink Test Get Target](#create-symlink-symlink-test-get-target)
-    - [Temporary File](#temporary-file)
-    - [Build Pathname](#build-pathname)
-    - [Dirname And Basename](#dirname-and-basename)
-    - [Absolute Pathname](#absolute-pathname)
-    - [Iterate Over Directory By File](#iterate-over-directory-by-file)
-    - [Make Directory](#make-directory)
-    - [Recursive Copy](#recursive-copy)
-    - [Remove Empty Directory](#remove-empty-directory)
-    - [Remove Directory And Contents](#remove-directory-and-contents)
-    - [Directory Test](#directory-test)
-    - [Command Line Arguments](#command-line-arguments)
-    - [Program Name](#program-name)
-    - [Environment Variables](#environment-variables)
-    - [User Id And Name](#user-id-and-name)
-    - [Exit](#exit)
-    - [External Command](#external-command)
-    - [Command Substitution](#command-substitution)
-    - [Complete Example](#complete-example)
-    - [Compile Library](#compile-library)
-    - [Load Library](#load-library)
-    - [Load Library In Subdirectory](#load-library-in-subdirectory)
-    - [Hot Patch](#hot-patch)
-    - [Load Error](#load-error)
-    - [Library Path](#library-path)
-    - [Library Path Environment Variable](#library-path-environment-variable)
-    - [Library Path Command Line Option](#library-path-command-line-option)
-    - [Namespace Declaration](#namespace-declaration)
-    - [Subnamespace Declaration](#subnamespace-declaration)
-    - [Namespace Separator](#namespace-separator)
-    - [Import Definitions](#import-definitions)
-    - [Import All Definitions In Namespace](#import-all-definitions-in-namespace)
-    - [Namespace Shadow Avoidance](#namespace-shadow-avoidance)
-    - [Identifier Shadow Avoidance](#identifier-shadow-avoidance)
-    - [Package Manager Help](#package-manager-help)
-    - [List Installed Packages](#list-installed-packages)
-    - [Search Packages](#search-packages)
-    - [Install Package](#install-package)
-    - [Remove Package](#remove-package)
-    - [Define Class](#define-class)
-    - [Make Instance](#make-instance)
-    - [Read Attribute](#read-attribute)
-    - [Write Attribute](#write-attribute)
-    - [Define Method](#define-method)
-    - [Invoke Method](#invoke-method)
-    - [Universal Superclass](#universal-superclass)
-    - [Multiple Inheritance](#multiple-inheritance)
-    - [Backquote And Comma](#backquote-and-comma)
-    - [Defmacro](#defmacro)
-    - [Defmacro W Backquote](#defmacro-w-backquote)
-    - [Macro Predicate](#macro-predicate)
-    - [Macroexpand](#macroexpand)
-    - [Splice Quote](#splice-quote)
-    - [Recursive Macro](#recursive-macro)
-    - [Hygienic](#hygienic)
-    - [Local Values](#local-values)
-    - [Inspect Type](#inspect-type)
-    - [Instance Of](#instance-of)
-    - [Basic Types](#basic-types)
-    - [Sequence Data Types](#sequence-data-types)
-    - [Get Docstring](#get-docstring)
-    - [Define Function With Docstring](#define-function-with-docstring)
-    - [Apropos And Documentation Search](#apropos-and-documentation-search)
-    - [New](#new)
-    - [Method](#method)
-    - [Class Method](#class-method)
-    - [Chain](#chain)
-    - [Import](#import)
-    - [To Java Array](#to-java-array)
-
-
---------------------
-
-## 一. 对比: Racket/Clojure/EmacsLisp/CommonLisp
-
-#### Show Version
 ```common-lisp
 ;; common-lisp
 $ sbcl --version
@@ -334,7 +24,8 @@ $ emacs --version
 ```
 
 
-#### Compiler
+## Compiler
+
 ```common-lisp
 ;; common-lisp
 
@@ -353,7 +44,8 @@ M-x byte-compile-file
 ```
 
 
-#### Standalone Executable
+## Standalone Executable
+
 ```common-lisp
 ;; common-lisp
 (sb-ext:save-lisp-and-die  "executable"  :executable t  :toplevel 'function)
@@ -372,7 +64,8 @@ $ mzc —exe executable file
 ```
 
 
-#### Interpreter
+## Interpreter
+
 ```common-lisp
 ;; common-lisp
 $ sbcl --script foo.lisp
@@ -392,8 +85,9 @@ java -cp clojure.jar clojure.main foo.clj
 ```
 
 
-#### Shebang
+## Shebang
 ```common-lisp
+
 ;; common-lisp
 #!/usr/bin/env sbcl --script
 ```
@@ -412,8 +106,9 @@ specify full path to clojure jar:
 ```
 
 
-#### Repl
+## Repl
 ```common-lisp
+
 ;; common-lisp
 $ sbcl
 ```
@@ -431,7 +126,8 @@ M-x ielm
 ```
 
 
-#### Command Line Program
+## Command Line Program
+
 ```common-lisp
 ;; common-lisp
 
@@ -450,7 +146,8 @@ $ racket -e '(+ 1 1)'
 ```
 
 
-#### Word Separator
+## Word Separator
+
 ```common-lisp
 ;; common-lisp
 whitespace
@@ -469,7 +166,8 @@ whitespace
 ```
 
 
-#### End Of Line Comment
+## End Of Line Comment
+
 ```common-lisp
 ;; common-lisp
 (+ 1 1) ; adding
@@ -488,7 +186,8 @@ whitespace
 ```
 
 
-#### Multiple Line Comment
+## Multiple Line Comment
+
 ```common-lisp
 ;; common-lisp 和 emacs-lisp的区别, clisp 可以行中间注释, elisp不可以
 (+ 1 #| adding |# 1) ;;=> 2
@@ -507,7 +206,8 @@ whitespace
 ```
 
 
-#### Identifier
+## Identifier
+
 ```common-lisp
 ;; common-lisp
 case insensitive, cannot start with digitexcluded characters:
@@ -532,11 +232,12 @@ SP ( ) " , ' ` ; # | \ _ [ ]
 ```
 
 
-#### Quoted Identifierand Escaped Identifier
+## Quoted Identifierand Escaped Identifier
+
 ```common-lisp
 ;; common-lisp
 (setq |white space symbol| 3) ;;=> 3
-(setq white\ space\ symbol 3) ;; 
+(setq white\ space\ symbol 3) ;;
 ```
 ```racket
 ;; racket
@@ -554,7 +255,8 @@ none
 ```
 
 
-#### Local Variable
+## Local Variable
+
 ```common-lisp
 ;; common-lisp
 ; parallel assignment:
@@ -581,7 +283,8 @@ none
 ```
 
 
-#### Global Variable
+## Global Variable
+
 ```common-lisp
 ;; common-lisp
 (defparameter *x* 3) ;; doesn't change x if already set, *X* => 3 , (setq *X* 312312) => *X* 还是312312?
@@ -598,12 +301,13 @@ none
 ```
 ```emacs-lisp
 ;; emacs-lisp 即使是一个列表，也是可以作为变量名的
-(set 'x 3) 
+(set 'x 3)
 (setq x 3)
 ```
 
 
-#### Remove Variable
+## Remove Variable
+
 ```common-lisp
 ;; common-lisp
 (makunbound 'x) ;; (makunbound '*X*) 去除变量值
@@ -622,8 +326,9 @@ none
 ```
 
 
-#### Null
+## Null
 ```common-lisp
+
 ;; common-lisp
 nil '()
 ```
@@ -642,7 +347,8 @@ nil '()
 ```
 
 
-#### Null Test
+## Null Test
+
 ```common-lisp
 ;; common-lisp
 (null x) ;; x 为nil时, 结果为T. 否则为NIL
@@ -661,7 +367,8 @@ nil '()
 ```
 
 
-#### Identifier As Value
+## Identifier As Value
+
 ```common-lisp
 ;; common-lisp
 'x
@@ -684,7 +391,8 @@ nil '()
 ```
 
 
-#### Identifier Test
+## Identifier Test
+
 ```common-lisp
 ;; common-lisp
 (symbolp 'x) ;; T 判断是否为symbol类型
@@ -703,7 +411,8 @@ nil '()
 ```
 
 
-#### Identifier Equality Test
+## Identifier Equality Test
+
 ```common-lisp
 ;; common-lisp
 (eq 'x 'x) ;; => (eq (quote x) 'x) => T, eq通常用于测试是否相等的表达式,=测试是否相等的数字
@@ -722,7 +431,8 @@ nil '()
 ```
 
 
-#### Non Referential Identifier
+## Non Referential Identifier
+
 ```common-lisp
 ;; common-lisp
 :foo ;;=> :FOO
@@ -741,7 +451,8 @@ nil '()
 ```
 
 
-#### Identifier Attributesset Get Remove
+## Identifier Attributesset Get Remove
+
 ```common-lisp
 ;; common-lisp
 (set 'x 13)
@@ -769,7 +480,8 @@ none
 ```
 
 
-#### True And False
+## True And False
+
 ```common-lisp
 ;; common-lisp
 t nil ;;=> T, NIL
@@ -789,7 +501,8 @@ t nil
 ```
 
 
-#### Falsehoods
+## Falsehoods
+
 ```common-lisp
 ;; common-lisp
 nil ()
@@ -808,7 +521,8 @@ nil ()
 ```
 
 
-#### Logical Operators
+## Logical Operators
+
 ```common-lisp
 ;; common-lisp
 (or (not t) #|输出NIL|# (and t nil) #|输出NIL|#) ;;=> NIL
@@ -827,7 +541,8 @@ nil ()
 ```
 
 
-#### Relational Operators
+## Relational Operators
+
 ```common-lisp
 ;; common-lisp
 = /= < > <= >=
@@ -846,7 +561,8 @@ nil ()
 ```
 
 
-#### Min And Max
+## Min And Max
+
 ```common-lisp
 ;; common-lisp
 (min 1 2 3) ;;=> 1
@@ -869,7 +585,8 @@ nil ()
 ```
 
 
-#### Numeric Predicates
+## Numeric Predicates
+
 ```common-lisp
 ;; common-lisp 数值和浮点型判断
 numberp integerp
@@ -893,7 +610,8 @@ numberp integerpnone floatpnone none
 ```
 
 
-#### Arithmetic Operators
+## Arithmetic Operators
+
 ```common-lisp
 ;; common-lisp
 + - * / mod
@@ -912,7 +630,8 @@ numberp integerpnone floatpnone none
 ```
 
 
-#### Integer Divisionand Remainder
+## Integer Divisionand Remainder
+
 ```common-lisp
 ;; common-lisp
 (truncate 7 3) ;;=> 2, 1
@@ -935,7 +654,8 @@ numberp integerpnone floatpnone none
 ```
 
 
-#### Integer Division By Zero
+## Integer Division By Zero
+
 ```common-lisp
 ;; common-lisp
 division-by-zero error
@@ -954,7 +674,8 @@ arith-error
 ```
 
 
-#### Float Division
+## Float Division
+
 ```common-lisp
 ;; common-lisp
 rational:
@@ -981,7 +702,8 @@ integer quotient:
 ```
 
 
-#### Float Division By Zero
+## Float Division By Zero
+
 ```common-lisp
 ;; common-lisp
 division-by-zero error
@@ -1000,8 +722,9 @@ division-by-zero error
 ```
 
 
-#### Power
+## Power
 ```common-lisp
+
 ;; common-lisp
 (expt 2 32) ;;=> => 4294967296 (33 bits, #x100000000, #o40000000000, #b100000000000000000000000000000000)
 ```
@@ -1020,10 +743,11 @@ returns float:
 ```
 
 
-#### Sqrt
+## Sqrt
 ```common-lisp
+
 ;; common-lisp
-(sqrt 2) ;;=> => 1.4142135 
+(sqrt 2) ;;=> => 1.4142135
 ```
 ```racket
 ;; racket
@@ -1039,8 +763,9 @@ returns float:
 ```
 
 
-#### Sqrt  1
+## Sqrt  1
 ```common-lisp
+
 ;; common-lisp
 #c(0.0 1.0)
 ```
@@ -1058,7 +783,8 @@ returns float:
 ```
 
 
-#### Transcendental Functions
+## Transcendental Functions
+
 ```common-lisp
 ;; common-lisp
 exp log sin cos tan asin acos atan atan ;;=> 周期函数,声波的机器学习,傅里叶分析
@@ -1077,7 +803,8 @@ exp log sin cos tan asin acos atan atan
 ```
 
 
-#### Float Truncation
+## Float Truncation
+
 ```common-lisp
 ;; common-lisp
 return two values, first is integer:
@@ -1101,7 +828,8 @@ fround fceiling ffloortruncate returns integer
 ```
 
 
-#### Absolute Valueand Signum
+## Absolute Valueand Signum
+
 ```common-lisp
 ;; common-lisp
 abs signum
@@ -1120,7 +848,8 @@ abs signum
 ```
 
 
-#### Integer Overflow
+## Integer Overflow
+
 ```common-lisp
 ;; common-lisp
 none; arbitrary-precision integers
@@ -1139,7 +868,8 @@ clojure.lang.Numbers.throwIntOverflow exception
 ```
 
 
-#### Float Overflow
+## Float Overflow
+
 ```common-lisp
 ;; common-lisp
 floating-point-overflow error
@@ -1159,7 +889,8 @@ not literals:
 ```
 
 
-#### Rational Construction
+## Rational Construction
+
 ```common-lisp
 ;; common-lisp
 (/ 3 7); literal:
@@ -1183,7 +914,8 @@ not literals:
 ```
 
 
-#### Rational Decomposition
+## Rational Decomposition
+
 ```common-lisp
 ;; common-lisp
 (numerator 3/7) ;;=> 3
@@ -1205,7 +937,8 @@ none none
 ```
 
 
-#### Complex Construction
+## Complex Construction
+
 ```common-lisp
 ;; common-lisp
 #c(1 2) ;;=> ??
@@ -1225,7 +958,8 @@ none
 ```
 
 
-#### Complex Decomposition
+## Complex Decomposition
+
 ```common-lisp
 ;; common-lisp
 (realpart #c(1 2)) ;; => 1
@@ -1252,7 +986,8 @@ none none
 ```
 
 
-#### Random Numberuniform Integer Uniform Float Normal Float
+## Random Numberuniform Integer Uniform Float Normal Float
+
 ```common-lisp
 ;; common-lisp
 (random 100) ;; => 92
@@ -1276,7 +1011,8 @@ none none
 ```
 
 
-#### Random Seed
+## Random Seed
+
 ```common-lisp
 ;; common-lisp
 (setq *random-state*  (sb-ext:seed-random-state 17))
@@ -1295,7 +1031,8 @@ none none
 ```
 
 
-#### Bit Operators
+## Bit Operators
+
 ```common-lisp
 ;; common-lisp 位运算
 ash left shift when 2nd argument positive logand logior logxor lognot
@@ -1314,12 +1051,13 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 ```
 
 
-#### Binary Octal And Hex Literals
+## Binary Octal And Hex Literals
+
 ```common-lisp
 ;; common-lisp
 #b101010 ;; => 42 (6 bits, #x2A, #o52, #b101010)
 #o52 ;;=> 42 (6 bits, #x2A, #o52, #b101010)
-#x2a ;;=> 42 (6 bits, #x2A, #o52, #b101010) 
+#x2a ;;=> 42 (6 bits, #x2A, #o52, #b101010)
 ```
 ```racket
 ;; racket
@@ -1337,8 +1075,9 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 ```
 
 
-#### Radix
+## Radix
 ```common-lisp
+
 ;; common-lisp
 (format nil "~7r" 42) ;;=> "60"
 ```
@@ -1356,7 +1095,8 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 ```
 
 
-#### String Test
+## String Test
+
 ```common-lisp
 ;; common-lisp
 (stringp "foo") ;;=> T, (symbolp :abc)=> T
@@ -1375,7 +1115,8 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 ```
 
 
-#### String Literal
+## String Literal
+
 ```common-lisp
 ;; common-lisp
 "foo bar"
@@ -1394,7 +1135,8 @@ lsh left shift when 2nd argument positive logand logior logxor lognot
 ```
 
 
-#### Newline In Literal
+## Newline In Literal
+
 ```common-lisp
 ;; common-lisp
 yes
@@ -1413,7 +1155,8 @@ yes
 ```
 
 
-#### Literal Escapes
+## Literal Escapes
+
 ```common-lisp
 ;; common-lisp
 \" \\ ;; 特殊字符反引号
@@ -1432,7 +1175,8 @@ yes
 ```
 
 
-#### Constructor
+## Constructor
+
 ```common-lisp
 ;; common-lisp
 
@@ -1451,7 +1195,8 @@ yes
 ```
 
 
-#### Format String
+## Format String
+
 ```common-lisp
 ;; common-lisp "~,2f" 是浮点型的format
 (format nil "~a: ~a ~,2f" "Foo" 7 13.457) ;;=> "Foo: 7 13.46"
@@ -1470,7 +1215,8 @@ yes
 ```
 
 
-#### Format Specifiers
+## Format Specifiers
+
 ```common-lisp
 ;; common-lisp 各种类型的Format填充方法
 ~a    any type, human readable
@@ -1506,7 +1252,8 @@ yes
 ```
 
 
-#### Compare Strings
+## Compare Strings
+
 ```common-lisp
 ;; common-lisp
 (string= "foo" "bar") ;;=> NIL ,字符串比较是否相同
@@ -1529,8 +1276,9 @@ yes
 ```
 
 
-#### Concatenate
-```common-lisp 
+## Concatenate
+
+```common-lisp
 ;; common-lisp 字符串连接
 (concatenate 'string "foo " "bar " "bar") ;;=> "foo bar bar" ,, (concatenate 'string 1 2 3) 是报错的
 ```
@@ -1548,7 +1296,8 @@ yes
 ```
 
 
-#### Replicate
+## Replicate
+
 ```common-lisp
 ;; common-lisp
 (make-string 3 :initial-element #\f) ;;=> "fff"
@@ -1567,7 +1316,8 @@ yes
 ```
 
 
-#### Translate Case
+## Translate Case
+
 ```common-lisp
 ;; common-lisp
 (string-downcase "FOO") ;;=> "foo"
@@ -1589,7 +1339,8 @@ yes
 ```
 
 
-#### Capitalize
+## Capitalize
+
 ```common-lisp
 ;; common-lisp
 ; "Foo Bar":
@@ -1610,8 +1361,9 @@ yes
 ```
 
 
-#### Trim
+## Trim
 ```common-lisp
+
 ;; common-lisp
 (string-trim '(#\space #\tab #\newline) " foo ") ;;=> "foo" 去除一些字符串
 ```
@@ -1630,7 +1382,8 @@ none; see notes for an implementation
 ```
 
 
-#### Padon Right On Left
+## Padon Right On Left
+
 ```common-lisp
 ;; common-lisp
 (format nil "~10a" "foo") ;; => "foo       "
@@ -1650,7 +1403,8 @@ none; see notes for an implementation
 ```
 
 
-#### Number To String
+## Number To String
+
 ```common-lisp
 ;; common-lisp
 (concatenate 'string "value: " (princ-to-string 8)) ;;=> "value: 8"
@@ -1669,7 +1423,8 @@ none; see notes for an implementation
 ```
 
 
-#### String To Number
+## String To Number
+
 ```common-lisp
 ;; common-lisp
 (+ 7 (parse-integer "12")) ;;=> 19 (5 bits, #x13, #o23, #b10011)
@@ -1692,8 +1447,9 @@ none; see notes for an implementation
 ```
 
 
-#### Split
+## Split
 ```common-lisp
+
 ;; common-lisp
 (cl-ppcre:split "[ \t\n]+" "foo bar baz") ;; 必须要安装包=> Package CL-PPCRE does not exist.
 ```
@@ -1711,7 +1467,8 @@ none; see notes for an implementation
 ```
 
 
-#### String Join
+## String Join
+
 ```common-lisp
 ;; common-lisp reduce累加的字符串
 (reduce (lambda (m o) (concatenate 'string m " " o)) '("foo" "bar" "baz")) ;;=> "foo bar baz"
@@ -1730,8 +1487,9 @@ none; see notes for an implementation
 ```
 
 
-#### Length
+## Length
 ```common-lisp
+
 ;; common-lisp
 (length "foo") ;;=> 3 (2 bits, #x3, #o3, #b11)
 ```
@@ -1749,7 +1507,8 @@ none; see notes for an implementation
 ```
 
 
-#### Index Of Substring
+## Index Of Substring
+
 ```common-lisp
 ;; common-lisp
 (search "bar" "foo bar") ;;=> 4 (3 bits, #x4, #o4, #b100)
@@ -1770,7 +1529,8 @@ racket:
 ```
 
 
-#### Extract Substring
+## Extract Substring
+
 ```common-lisp
 ;; common-lisp
 (subseq "foo bar" 4 7)
@@ -1789,7 +1549,8 @@ racket:
 ```
 
 
-#### Character Literal
+## Character Literal
+
 ```common-lisp
 ;; common-lisp
 #\a #\space #\newline #\backspace #\tab #\linefeed #\page #\return #\rubout
@@ -1808,7 +1569,8 @@ racket:
 ```
 
 
-#### Test Characters
+## Test Characters
+
 ```common-lisp
 ;; common-lisp
 (characterp #\x)
@@ -1832,7 +1594,8 @@ racket:
 ```
 
 
-#### Chr And Ord
+## Chr And Ord
+
 ```common-lisp
 ;; common-lisp
 (code-char 97)
@@ -1854,7 +1617,8 @@ racket:
 ```
 
 
-#### To Array Of Characters
+## To Array Of Characters
+
 ```common-lisp
 ;; common-lisp
 
@@ -1874,7 +1638,8 @@ racket:
 ```
 
 
-#### Character Lookup
+## Character Lookup
+
 ```common-lisp
 ;; common-lisp
 (char "foo" 0)
@@ -1893,8 +1658,9 @@ racket:
 ```
 
 
-#### Literal
+## Literal
 ```common-lisp
+
 ;; common-lisp
 use a string:
 "\\b\\d{5}\\b"
@@ -1917,7 +1683,8 @@ posix extended:
 ```
 
 
-#### Character Class Abbrevations
+## Character Class Abbrevations
+
 ```common-lisp
 ;; common-lisp
 . \d \D \s \S \w \W
@@ -1938,8 +1705,9 @@ regexp:
 ```
 
 
-#### Anchors
+## Anchors
 ```common-lisp
+
 ;; common-lisp
 ^ $ \b \B
 ```
@@ -1959,7 +1727,8 @@ regexp:
 ```
 
 
-#### Match Test
+## Match Test
+
 ```common-lisp
 ;; common-lisp
 (ql:quickload "cl-ppcre")
@@ -1979,7 +1748,8 @@ regexp:
 ```
 
 
-#### Case Insensitive Match Test
+## Case Insensitive Match Test
+
 ```common-lisp
 ;; common-lisp
 
@@ -1998,7 +1768,8 @@ regexp:
 ```
 
 
-#### Substitution
+## Substitution
+
 ```common-lisp
 ;; common-lisp
 (cl-ppcre:regex-replace "[^l]l"  "hello"  "EL")
@@ -2021,7 +1792,8 @@ regexp:
 ```
 
 
-#### Group Capture
+## Group Capture
+
 ```common-lisp
 ;; common-lisp
 
@@ -2040,8 +1812,9 @@ regexp:
 ```
 
 
-#### Scan
+## Scan
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -2059,7 +1832,8 @@ regexp:
 ```
 
 
-#### Backreference In Match And Substitution
+## Backreference In Match And Substitution
+
 ```common-lisp
 ;; common-lisp
 
@@ -2079,7 +1853,8 @@ regexp:
 ```
 
 
-#### Broken Down Datetime Type
+## Broken Down Datetime Type
+
 ```common-lisp
 ;; common-lisp
 No dedicated type; a list of 9 values is used:  second: 0-59  minute: 0-59  hour: 0-23  day of month: 1-31  month: 1-12  year: 4 digits  day of week: 0-6 for Mon-Sun  is daylight savings time: t or nil  timezone: negated UTC offset in hours
@@ -2098,7 +1873,8 @@ No dedicated type; a list of 9 values is used:  second: 0-59  minute: 0-59 
 ```
 
 
-#### Current Datetime
+## Current Datetime
+
 ```common-lisp
 ;; common-lisp
 (get-decoded-time)
@@ -2118,7 +1894,8 @@ No dedicated type; a list of 9 values is used:  second: 0-59  minute: 0-59 
 ```
 
 
-#### Current Unix Epoch
+## Current Unix Epoch
+
 ```common-lisp
 ;; common-lisp
 gray|; seconds since Jan 1, 1900:##
@@ -2138,7 +1915,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Unix Epoch To Broken Down Datetime
+## Unix Epoch To Broken Down Datetime
+
 ```common-lisp
 ;; common-lisp
 (decode-universal-time  (get-unversal-time))
@@ -2157,7 +1935,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Broken Down Datetime To Unix Epoch
+## Broken Down Datetime To Unix Epoch
+
 ```common-lisp
 ;; common-lisp
 (encode-universal-time 0 22 10 31 5 2015)
@@ -2177,7 +1956,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Format Datetime
+## Format Datetime
+
 ```common-lisp
 ;; common-lisp
 
@@ -2198,7 +1978,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Parse Datetime
+## Parse Datetime
+
 ```common-lisp
 ;; common-lisp
 
@@ -2221,7 +2002,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Date Parts
+## Date Parts
+
 ```common-lisp
 ;; common-lisp
 (multiple-value-bind  (ss mi hr dy mo yr)  (get-decoded-time)  (list ss mi hr) ; quiesce warning  (list dy mo yr))
@@ -2246,7 +2028,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Time Parts
+## Time Parts
+
 ```common-lisp
 ;; common-lisp
 (multiple-value-bind  (ss mi hr)  (get-decoded-time)  (list ss mi hr))
@@ -2271,7 +2054,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Build Broken Down Datetime
+## Build Broken Down Datetime
+
 ```common-lisp
 ;; common-lisp
 (encode-universal-time 0 22 10 31 5 2015)
@@ -2290,8 +2074,9 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Literal
+## Literal
 ```common-lisp
+
 ;; common-lisp
 '(1 2 3)
 (quote (1 2 3))
@@ -2315,7 +2100,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Constructor
+## Constructor
+
 ```common-lisp
 ;; common-lisp
 (list 1 2 3)
@@ -2334,7 +2120,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Predicate
+## Predicate
+
 ```common-lisp
 ;; common-lisp
 (listp '(1 2 3))
@@ -2353,7 +2140,8 @@ gray|; seconds since Jan 1, 1900:##
 ```
 
 
-#### Empty Test
+## Empty Test
+
 ```common-lisp
 ;; common-lisp
 nil and '() are synonyms and evaluate as false in a boolean context. All other values are true.
@@ -2372,7 +2160,8 @@ nil and '() are synonyms and evaluate as false in a boolean context. All other v
 ```
 
 
-#### Evaluating The Empty List
+## Evaluating The Empty List
+
 ```common-lisp
 ;; common-lisp
 nil
@@ -2391,8 +2180,9 @@ nil
 ```
 
 
-#### Cons
+## Cons
 ```common-lisp
+
 ;; common-lisp
 (cons 1 '(2 3))
 ```
@@ -2410,8 +2200,9 @@ nil
 ```
 
 
-#### Head
+## Head
 ```common-lisp
+
 ;; common-lisp
 (car '(1 2 3))
 (first '(1 2 3))
@@ -2431,8 +2222,9 @@ car
 ```
 
 
-#### Tail
+## Tail
 ```common-lisp
+
 ;; common-lisp
 (cdr '(1 2 3))
 (rest '(1 2 3))
@@ -2454,7 +2246,8 @@ car
 ```
 
 
-#### Head And Tail Of Empty List
+## Head And Tail Of Empty List
+
 ```common-lisp
 ;; common-lisp
 both evaluate to nil
@@ -2473,8 +2266,9 @@ both evaluate to nil
 ```
 
 
-#### Length
+## Length
 ```common-lisp
+
 ;; common-lisp
 (length '(1 2 3))
 ```
@@ -2492,7 +2286,8 @@ both evaluate to nil
 ```
 
 
-#### Equality Test
+## Equality Test
+
 ```common-lisp
 ;; common-lisp
 (equal '(1 2 3) '(1 2 3))
@@ -2511,7 +2306,8 @@ both evaluate to nil
 ```
 
 
-#### Nth Element
+## Nth Element
+
 ```common-lisp
 ;; common-lisp
 ; indexed from zero:
@@ -2531,7 +2327,8 @@ both evaluate to nil
 ```
 
 
-#### Out Of Bounds Behavior
+## Out Of Bounds Behavior
+
 ```common-lisp
 ;; common-lisp
 nil
@@ -2550,7 +2347,8 @@ nil
 ```
 
 
-#### Element Index
+## Element Index
+
 ```common-lisp
 ;; common-lisp
 (position 7 '(5 6 7 8))
@@ -2570,7 +2368,8 @@ none
 ```
 
 
-#### Concatenate
+## Concatenate
+
 ```common-lisp
 ;; common-lisp
 (append '(1 2 3) '(4 5 6))
@@ -2589,8 +2388,9 @@ none
 ```
 
 
-#### Take
+## Take
 ```common-lisp
+
 ;; common-lisp
 none
 ```
@@ -2608,8 +2408,9 @@ none
 ```
 
 
-#### Drop
+## Drop
 ```common-lisp
+
 ;; common-lisp
 (nthcdr 2 '(1 2 3 4))
 ```
@@ -2627,7 +2428,8 @@ none
 ```
 
 
-#### Last Element
+## Last Element
+
 ```common-lisp
 ;; common-lisp
 (car (last '(1 2 3)))
@@ -2646,7 +2448,8 @@ none
 ```
 
 
-#### All But Last Element
+## All But Last Element
+
 ```common-lisp
 ;; common-lisp
 (butlast '(1 2 3))
@@ -2666,8 +2469,9 @@ none
 ```
 
 
-#### Reverse
+## Reverse
 ```common-lisp
+
 ;; common-lisp
 (reverse '(1 2 3))
 ```
@@ -2685,8 +2489,9 @@ none
 ```
 
 
-#### Sort
+## Sort
 ```common-lisp
+
 ;; common-lisp
 (sort '(3 2 4 1) '<)
 ```
@@ -2704,8 +2509,9 @@ none
 ```
 
 
-#### Dedupe
+## Dedupe
 ```common-lisp
+
 ;; common-lisp
 (remove-duplicates '(1 1 2 3))
 ```
@@ -2723,7 +2529,8 @@ none
 ```
 
 
-#### Membership
+## Membership
+
 ```common-lisp
 ;; common-lisp
 (member 7 '(1 2 3))
@@ -2742,8 +2549,9 @@ none
 ```
 
 
-#### Map
+## Map
 ```common-lisp
+
 ;; common-lisp
 (mapcar  (lambda (x) (* x x))  '(1 2 3))
 ```
@@ -2762,8 +2570,9 @@ none
 ```
 
 
-#### Filter
+## Filter
 ```common-lisp
+
 ;; common-lisp
 (remove-if-not  (lambda (x) (> x 2))  '(1 2 3)); remove-if returns complement
 ```
@@ -2781,8 +2590,9 @@ none
 ```
 
 
-#### Reduce
+## Reduce
 ```common-lisp
+
 ;; common-lisp
 (reduce '-  '(1 2 3 4)  :initial-value 0)
 ```
@@ -2800,7 +2610,8 @@ none
 ```
 
 
-#### Right Fold
+## Right Fold
+
 ```common-lisp
 ;; common-lisp
 (reduce '-  '(1 2 3 4)  :initial-value 0  :from-end t)
@@ -2819,8 +2630,9 @@ none
 ```
 
 
-#### Iterate
+## Iterate
 ```common-lisp
+
 ;; common-lisp
 (dolist (x '(1 2 3))  (print x)  (print (- x)))
 ```
@@ -2838,7 +2650,8 @@ none
 ```
 
 
-#### Universal Predicate
+## Universal Predicate
+
 ```common-lisp
 ;; common-lisp
 (every  (lambda (i) (= 0 (rem i 2)))  '(1 2 3 4))
@@ -2857,7 +2670,8 @@ none
 ```
 
 
-#### Existential Predicate
+## Existential Predicate
+
 ```common-lisp
 ;; common-lisp
 (some  (lambda (i) (= 0 (rem i 2)))  '(1 2 3 4))
@@ -2876,7 +2690,8 @@ none
 ```
 
 
-#### List Comprehension
+## List Comprehension
+
 ```common-lisp
 ;; common-lisp
 
@@ -2895,8 +2710,9 @@ none
 ```
 
 
-#### Shuffle
+## Shuffle
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -2914,7 +2730,8 @@ none
 ```
 
 
-#### Set Head
+## Set Head
+
 ```common-lisp
 ;; common-lisp
 (defparameter *a* '(1 2 3))
@@ -2937,7 +2754,8 @@ none
 ```
 
 
-#### Set Tail
+## Set Tail
+
 ```common-lisp
 ;; common-lisp
 (defparameter *a* '(1 2 3))
@@ -2961,7 +2779,8 @@ none
 ```
 
 
-#### Manipulate Back
+## Manipulate Back
+
 ```common-lisp
 ;; common-lisp
 (defparameter *a* '(1 2 3))
@@ -2984,8 +2803,9 @@ none
 ```
 
 
-#### Flatten
+## Flatten
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -3003,7 +2823,8 @@ none
 ```
 
 
-#### Associative Array Lookup
+## Associative Array Lookup
+
 ```common-lisp
 ;; common-lisp
 (assoc 3 '((1 2) (3 4)))
@@ -3022,7 +2843,8 @@ none, see note
 ```
 
 
-#### Flat Associative Array Lookup
+## Flat Associative Array Lookup
+
 ```common-lisp
 ;; common-lisp
 (getf '(1 2 3 4) 3)
@@ -3041,7 +2863,8 @@ none
 ```
 
 
-#### Pair Literal
+## Pair Literal
+
 ```common-lisp
 ;; common-lisp
 '(1 . 2)
@@ -3060,7 +2883,8 @@ none
 ```
 
 
-#### Cons Cell Test
+## Cons Cell Test
+
 ```common-lisp
 ;; common-lisp
 (cons '(1 . 2))
@@ -3082,7 +2906,8 @@ none
 ```
 
 
-#### Translate Elements Recursively
+## Translate Elements Recursively
+
 ```common-lisp
 ;; common-lisp
 (sublis '((1 . 2) (3 . 4))  '(1 (3 3 (1))))
@@ -3101,8 +2926,9 @@ none
 ```
 
 
-#### Literal
+## Literal
 ```common-lisp
+
 ;; common-lisp
 #(1 2 3)
 ```
@@ -3120,7 +2946,8 @@ none
 ```
 
 
-#### Constructor
+## Constructor
+
 ```common-lisp
 ;; common-lisp
 (vector 1 2 3)
@@ -3139,8 +2966,9 @@ none
 ```
 
 
-#### Size
+## Size
 ```common-lisp
+
 ;; common-lisp
 (length #(1 2 3))
 ```
@@ -3158,8 +2986,9 @@ none
 ```
 
 
-#### Lookup
+## Lookup
 ```common-lisp
+
 ;; common-lisp
 (elt #(1 2 3) 0) or
 (aref #(1 2 3) 0)
@@ -3178,8 +3007,9 @@ none
 ```
 
 
-#### Update
+## Update
 ```common-lisp
+
 ;; common-lisp
 (setq v [1 2 3])
 (setf (aref v 2) 4)
@@ -3200,7 +3030,8 @@ none
 ```
 
 
-#### Out Of Bounds Behavior
+## Out Of Bounds Behavior
+
 ```common-lisp
 ;; common-lisp
 raises sb-kernel:index-too-large-error
@@ -3219,7 +3050,8 @@ error
 ```
 
 
-#### Array To List
+## Array To List
+
 ```common-lisp
 ;; common-lisp
 (coerce #(1 2 3) 'list)
@@ -3238,7 +3070,8 @@ error
 ```
 
 
-#### List To Array
+## List To Array
+
 ```common-lisp
 ;; common-lisp
 (coerce '(1 2 3) 'vector)
@@ -3257,8 +3090,9 @@ error
 ```
 
 
-#### Reverse
+## Reverse
 ```common-lisp
+
 ;; common-lisp
 (reverse #(1 2 3))
 ```
@@ -3276,8 +3110,9 @@ error
 ```
 
 
-#### Sort
+## Sort
 ```common-lisp
+
 ;; common-lisp
 (sort #(2 4 1 3) #'<)
 ```
@@ -3295,8 +3130,9 @@ error
 ```
 
 
-#### Map
+## Map
 ```common-lisp
+
 ;; common-lisp
 (map 'vector (lambda (x) (* x x)) #(1 2 3))
 ```
@@ -3314,8 +3150,9 @@ error
 ```
 
 
-#### Filter
+## Filter
 ```common-lisp
+
 ;; common-lisp
 (remove-if-not (lambda (x) (> x 2)) #(1 2 3)); also remove-if
 ```
@@ -3333,8 +3170,9 @@ error
 ```
 
 
-#### Reduce
+## Reduce
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -3352,8 +3190,9 @@ error
 ```
 
 
-#### Literal
+## Literal
 ```common-lisp
+
 ;; common-lisp
 none
 ```
@@ -3373,7 +3212,8 @@ none
 ```
 
 
-#### Constructor
+## Constructor
+
 ```common-lisp
 ;; common-lisp
 (defparameter *h* (make-hash-table :test 'equal)); default equality test is 'eql
@@ -3394,7 +3234,8 @@ none
 ```
 
 
-#### Predicate
+## Predicate
+
 ```common-lisp
 ;; common-lisp
 (hash-table-p *h*)
@@ -3414,8 +3255,9 @@ none
 ```
 
 
-#### Size
+## Size
 ```common-lisp
+
 ;; common-lisp
 (hash-table-count *h*)
 ```
@@ -3434,8 +3276,9 @@ none
 ```
 
 
-#### Lookup
+## Lookup
 ```common-lisp
+
 ;; common-lisp
 (gethash "t" *h*)
 ```
@@ -3458,8 +3301,9 @@ none
 ```
 
 
-#### Update
+## Update
 ```common-lisp
+
 ;; common-lisp
 (setf (gethash "t" *h*) 1)
 ```
@@ -3478,7 +3322,8 @@ none
 ```
 
 
-#### Missing Key Behavior
+## Missing Key Behavior
+
 ```common-lisp
 ;; common-lisp
 returns nil
@@ -3497,7 +3342,8 @@ returns nil
 ```
 
 
-#### Is Key Present
+## Is Key Present
+
 ```common-lisp
 ;; common-lisp
 (nth-value 1 (gethash "t" *h*))
@@ -3516,8 +3362,9 @@ none
 ```
 
 
-#### Delete
+## Delete
 ```common-lisp
+
 ;; common-lisp
 (remhash "t" *h*)
 ```
@@ -3536,8 +3383,9 @@ none
 ```
 
 
-#### Merge
+## Merge
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -3556,8 +3404,9 @@ none
 ```
 
 
-#### Invert
+## Invert
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -3576,8 +3425,9 @@ none
 ```
 
 
-#### Iterate
+## Iterate
 ```common-lisp
+
 ;; common-lisp
 (maphash  (lambda (k v)    (print k)    (print v))  *h*)
 ```
@@ -3595,7 +3445,8 @@ none
 ```
 
 
-#### Keys And Values As Lists
+## Keys And Values As Lists
+
 ```common-lisp
 ;; common-lisp
 none
@@ -3616,7 +3467,8 @@ none
 ```
 
 
-#### Defstruct
+## Defstruct
+
 ```common-lisp
 ;; common-lisp
 (defstruct account id balance)
@@ -3635,8 +3487,9 @@ none
 ```
 
 
-#### Struct
+## Struct
 ```common-lisp
+
 ;; common-lisp
 (setq a  (make-account    :id 3    :balance 17.12))
 ```
@@ -3654,7 +3507,8 @@ none
 ```
 
 
-#### Struct Getter
+## Struct Getter
+
 ```common-lisp
 ;; common-lisp
 (account-id a)
@@ -3673,7 +3527,8 @@ none
 ```
 
 
-#### Struct Setter
+## Struct Setter
+
 ```common-lisp
 ;; common-lisp
 (setf (account-balance a) 0)
@@ -3692,7 +3547,8 @@ none
 ```
 
 
-#### Struct Predicate
+## Struct Predicate
+
 ```common-lisp
 ;; common-lisp
 (account-p a)
@@ -3711,7 +3567,8 @@ none
 ```
 
 
-#### Define Function
+## Define Function
+
 ```common-lisp
 ;; common-lisp
 (defun add (x y) (+ x y))
@@ -3730,7 +3587,8 @@ none
 ```
 
 
-#### Can Function And Variable Share Name
+## Can Function And Variable Share Name
+
 ```common-lisp
 ;; common-lisp
 yes
@@ -3749,7 +3607,8 @@ yes
 ```
 
 
-#### Optional Argument
+## Optional Argument
+
 ```common-lisp
 ;; common-lisp
 (defun add (a &optional b)  (if (null b) a (+ a b)))
@@ -3771,7 +3630,8 @@ yes
 ```
 
 
-#### Variable Number Of Arguments
+## Variable Number Of Arguments
+
 ```common-lisp
 ;; common-lisp
 (defun add (a &rest b)  (if (null b)    a    (+ a (eval (cons '+ b)))))
@@ -3792,7 +3652,8 @@ yes
 ```
 
 
-#### Default Value
+## Default Value
+
 ```common-lisp
 ;; common-lisp
 (defun add (a &optional (b 0))  (+ a b))
@@ -3812,7 +3673,8 @@ none
 ```
 
 
-#### Named Parameter
+## Named Parameter
+
 ```common-lisp
 ;; common-lisp
 (defun logarithm (&key number base)  (/ (log number) (log base)))
@@ -3834,7 +3696,8 @@ none
 ```
 
 
-#### Return Multiple Values
+## Return Multiple Values
+
 ```common-lisp
 ;; common-lisp
 (defun sqrts (x)  (values (sqrt x) (- (sqrt x))))
@@ -3854,7 +3717,8 @@ values creates a list:
 ```
 
 
-#### Assign Multiple Values To Local Variables
+## Assign Multiple Values To Local Variables
+
 ```common-lisp
 ;; common-lisp
 (multiple-value-bind (r1 r2)  (sqrts 3)  r2)
@@ -3873,7 +3737,8 @@ values creates a list:
 ```
 
 
-#### Assign Multiple Values To Global Variables
+## Assign Multiple Values To Global Variables
+
 ```common-lisp
 ;; common-lisp
 (multiple-value-setq (r1 r2)  (sqrts 3))
@@ -3892,7 +3757,8 @@ none
 ```
 
 
-#### Convert List To Multiple Values
+## Convert List To Multiple Values
+
 ```common-lisp
 ;; common-lisp
 (values-list '(1 2 3))
@@ -3911,7 +3777,8 @@ multiple values are lists
 ```
 
 
-#### Assign Multiple Values To List
+## Assign Multiple Values To List
+
 ```common-lisp
 ;; common-lisp
 (multiple-value-list (sqrts 3))
@@ -3930,7 +3797,8 @@ multiple values are lists
 ```
 
 
-#### Tail Call Optimization
+## Tail Call Optimization
+
 ```common-lisp
 ;; common-lisp
 yes for sbcl
@@ -3949,8 +3817,9 @@ no
 ```
 
 
-#### Lambda
+## Lambda
 ```common-lisp
+
 ;; common-lisp
 (lambda (x) (* x x))
 ```
@@ -3970,8 +3839,9 @@ no
 ```
 
 
-#### Apply
+## Apply
 ```common-lisp
+
 ;; common-lisp
 ((lambda (x) (* x x)) 2)
 (apply #'(lambda (x) (* x x)) '(2))
@@ -3994,8 +3864,9 @@ no
 ```
 
 
-#### Progn
+## Progn
 ```common-lisp
+
 ;; common-lisp
 progn prog1 prog2
 ```
@@ -4014,8 +3885,9 @@ progn prog1 prog2
 ```
 
 
-#### Loop
+## Loop
 ```common-lisp
+
 ;; common-lisp
 (setq i 1)
 (loop (print "hello")  (if (> i 10)    (return)    (setq i (+ i 1))))
@@ -4035,8 +3907,9 @@ none, use recursion
 ```
 
 
-#### Do
+## Do
 ```common-lisp
+
 ;; common-lisp
 (do ((i 1) (sum 0))  ((> i 100) sum)  (setq sum (+ sum i))  (setq i (+ i 1)))do* initializes serially
 ```
@@ -4054,8 +3927,9 @@ none
 ```
 
 
-#### Dotimes
+## Dotimes
 ```common-lisp
+
 ;; common-lisp
 (dotimes (i 10 nil)  (format t "hello~%"))
 ```
@@ -4073,8 +3947,9 @@ none
 ```
 
 
-#### If
+## If
 ```common-lisp
+
 ;; common-lisp
 (if (< x 0) (- x) x)
 ```
@@ -4092,8 +3967,9 @@ none
 ```
 
 
-#### When
+## When
 ```common-lisp
+
 ;; common-lisp
 (when (< x y)  (print "x is less ")  (print "than y"))
 ```
@@ -4112,8 +3988,9 @@ racket:
 ```
 
 
-#### Cond
+## Cond
 ```common-lisp
+
 ;; common-lisp
 (cond ((> x 0) 1)  ((= x 0) 0)  (t -1))
 ```
@@ -4131,7 +4008,8 @@ racket:
 ```
 
 
-#### Lazy Evaluation
+## Lazy Evaluation
+
 ```common-lisp
 ;; common-lisp
 
@@ -4152,7 +4030,8 @@ racket:
 ```
 
 
-#### Continuations
+## Continuations
+
 ```common-lisp
 ;; common-lisp
 
@@ -4173,8 +4052,9 @@ racket:
 ```
 
 
-#### Error
+## Error
 ```common-lisp
+
 ;; common-lisp
 (error "failed")
 ```
@@ -4192,7 +4072,8 @@ racket:
 ```
 
 
-#### Handle Error
+## Handle Error
+
 ```common-lisp
 ;; common-lisp
 (handler-case  (error "failed")  (simple-error (e)    (format t "error: ~a" e)))
@@ -4211,7 +4092,8 @@ racket:
 ```
 
 
-#### Define Exception
+## Define Exception
+
 ```common-lisp
 ;; common-lisp
 (define-condition odd-err (error)  ((num :accessor odd-err-num        :initarg :num))  (:report    (lambda (e s)      (format s "odd number: ~a"        (odd-err-num e)))))
@@ -4230,7 +4112,8 @@ only symbols and keywords can be thrown and caught
 ```
 
 
-#### Throw Exception
+## Throw Exception
+
 ```common-lisp
 ;; common-lisp
 (error 'odd-err :num 7)
@@ -4249,7 +4132,8 @@ only symbols and keywords can be thrown and caught
 ```
 
 
-#### Catch Exception
+## Catch Exception
+
 ```common-lisp
 ;; common-lisp
 (handler-case (/ 1 0)  (division-by-zero ()    (progn      (format t "division by zero")      nil)))
@@ -4268,7 +4152,8 @@ only symbols and keywords can be thrown and caught
 ```
 
 
-#### Restart Case
+## Restart Case
+
 ```common-lisp
 ;; common-lisp
 (defun halve (l)  (mapcar (lambda (x)    (restart-case      (if (= (rem x 2) 0) (/ x 2)        (error 'odd-error :num x))      (round-down () (/ (- x 1) 2))      (round-up () (/ (+ x 1) 2)))) l))
@@ -4287,7 +4172,8 @@ none
 ```
 
 
-#### Invoke Restart
+## Invoke Restart
+
 ```common-lisp
 ;; common-lisp
 (handler-bind  ((odd-err      (lambda (c)        (invoke-restart          'round-down))))      (halve '(1 2 4 9)))
@@ -4306,7 +4192,8 @@ none
 ```
 
 
-#### Finally Clause
+## Finally Clause
+
 ```common-lisp
 ;; common-lisp
 (unwind-protect  (error "failure")  (print "clean up"))
@@ -4325,7 +4212,8 @@ none
 ```
 
 
-#### Standard File Handles
+## Standard File Handles
+
 ```common-lisp
 ;; common-lisp
 *standard-input*
@@ -4350,7 +4238,8 @@ none
 ```
 
 
-#### End Of File Behavior
+## End Of File Behavior
+
 ```common-lisp
 ;; common-lisp
 read-line returns two values, the 2nd set to T at end-of-file.
@@ -4370,7 +4259,8 @@ Returns the value eof.Use eof-object? to test for it.
 ```
 
 
-#### Read Line From Stdin
+## Read Line From Stdin
+
 ```common-lisp
 ;; common-lisp
 (setq line (read-line))
@@ -4389,8 +4279,9 @@ Returns the value eof.Use eof-object? to test for it.
 ```
 
 
-#### Chomp
+## Chomp
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -4408,7 +4299,8 @@ read-line discards newline
 ```
 
 
-#### Write Line To Stdout
+## Write Line To Stdout
+
 ```common-lisp
 ;; common-lisp
 (defun println (s)  (format t "~a~%" s))
@@ -4429,7 +4321,8 @@ read-line discards newline
 ```
 
 
-#### Write Formatted String To Stdout
+## Write Formatted String To Stdout
+
 ```common-lisp
 ;; common-lisp
 (format t "~s ~d: ~2$~%"  "foo"  7  13.7)
@@ -4448,7 +4341,8 @@ read-line discards newline
 ```
 
 
-#### Open File For Reading
+## Open File For Reading
+
 ```common-lisp
 ;; common-lisp
 (setq in (open "/etc/hosts"))
@@ -4468,7 +4362,8 @@ read-line discards newline
 ```
 
 
-#### Open File For Writing
+## Open File For Writing
+
 ```common-lisp
 ;; common-lisp
 (setq out (open "/tmp/test" :direction :output :if-exists :supersede))
@@ -4488,7 +4383,8 @@ read-line discards newline
 ```
 
 
-#### Open File For Appending
+## Open File For Appending
+
 ```common-lisp
 ;; common-lisp
 (setq out (open "/tmp/test" :direction :output :if-exists :append))
@@ -4507,7 +4403,8 @@ read-line discards newline
 ```
 
 
-#### Close File
+## Close File
+
 ```common-lisp
 ;; common-lisp
 (close in)
@@ -4527,7 +4424,8 @@ read-line discards newline
 ```
 
 
-#### Close File Implicitly
+## Close File Implicitly
+
 ```common-lisp
 ;; common-lisp
 (with-open-file (out #P"/tmp/test" :direction :output) (write-line "lorem ipsum" out))
@@ -4546,7 +4444,8 @@ read-line discards newline
 ```
 
 
-#### Read Line
+## Read Line
+
 ```common-lisp
 ;; common-lisp
 (setq line (read-line f))
@@ -4565,7 +4464,8 @@ read-line discards newline
 ```
 
 
-#### Iterate Over File By Line
+## Iterate Over File By Line
+
 ```common-lisp
 ;; common-lisp
 
@@ -4584,7 +4484,8 @@ read-line discards newline
 ```
 
 
-#### Read File Into Array Of Strings
+## Read File Into Array Of Strings
+
 ```common-lisp
 ;; common-lisp
 
@@ -4604,7 +4505,8 @@ read-line discards newline
 ```
 
 
-#### Read File Into String
+## Read File Into String
+
 ```common-lisp
 ;; common-lisp
 
@@ -4623,7 +4525,8 @@ read-line discards newline
 ```
 
 
-#### Write String
+## Write String
+
 ```common-lisp
 ;; common-lisp
 
@@ -4642,7 +4545,8 @@ read-line discards newline
 ```
 
 
-#### Write Line
+## Write Line
+
 ```common-lisp
 ;; common-lisp
 
@@ -4662,7 +4566,8 @@ read-line discards newline
 ```
 
 
-#### Flush File Handle
+## Flush File Handle
+
 ```common-lisp
 ;; common-lisp
 
@@ -4681,7 +4586,8 @@ read-line discards newline
 ```
 
 
-#### File Handle Positionget Set
+## File Handle Positionget Set
+
 ```common-lisp
 ;; common-lisp
 
@@ -4707,7 +4613,8 @@ read-line discards newline
 ```
 
 
-#### In Memory Stream
+## In Memory Stream
+
 ```common-lisp
 ;; common-lisp
 (setq f (make-string-input-stream    "lorem ipsum"))
@@ -4736,7 +4643,8 @@ read-line discards newline
 ```
 
 
-#### List Buffers
+## List Buffers
+
 ```common-lisp
 ;; common-lisp
 
@@ -4758,7 +4666,8 @@ read-line discards newline
 ```
 
 
-#### Current Bufferget And Set
+## Current Bufferget And Set
+
 ```common-lisp
 ;; common-lisp
 
@@ -4780,7 +4689,8 @@ read-line discards newline
 ```
 
 
-#### Clear Buffer
+## Clear Buffer
+
 ```common-lisp
 ;; common-lisp
 
@@ -4801,7 +4711,8 @@ read-line discards newline
 ```
 
 
-#### Pointget And Set
+## Pointget And Set
+
 ```common-lisp
 ;; common-lisp
 
@@ -4823,7 +4734,8 @@ read-line discards newline
 ```
 
 
-#### Search And Set Point
+## Search And Set Point
+
 ```common-lisp
 ;; common-lisp
 
@@ -4850,7 +4762,8 @@ read-line discards newline
 ```
 
 
-#### Insert At String Point
+## Insert At String Point
+
 ```common-lisp
 ;; common-lisp
 
@@ -4870,7 +4783,8 @@ read-line discards newline
 ```
 
 
-#### Current Buffer As String
+## Current Buffer As String
+
 ```common-lisp
 ;; common-lisp
 
@@ -4889,7 +4803,8 @@ read-line discards newline
 ```
 
 
-#### Insert File Contents At Point
+## Insert File Contents At Point
+
 ```common-lisp
 ;; common-lisp
 
@@ -4908,7 +4823,8 @@ read-line discards newline
 ```
 
 
-#### Markget And Set
+## Markget And Set
+
 ```common-lisp
 ;; common-lisp
 
@@ -4929,7 +4845,8 @@ read-line discards newline
 ```
 
 
-#### File Test Regular File Test
+## File Test Regular File Test
+
 ```common-lisp
 ;; common-lisp
 (osicat:file-exists-p "/tmp/foo")
@@ -4951,7 +4868,8 @@ read-line discards newline
 ```
 
 
-#### File Size
+## File Size
+
 ```common-lisp
 ;; common-lisp
 
@@ -4970,7 +4888,8 @@ read-line discards newline
 ```
 
 
-#### Is File Readable Writable Executable
+## Is File Readable Writable Executable
+
 ```common-lisp
 ;; common-lisp
 
@@ -4993,7 +4912,8 @@ read-line discards newline
 ```
 
 
-#### Set File Permissions
+## Set File Permissions
+
 ```common-lisp
 ;; common-lisp
 
@@ -5012,7 +4932,8 @@ read-line discards newline
 ```
 
 
-#### Last Modification Time
+## Last Modification Time
+
 ```common-lisp
 ;; common-lisp
 
@@ -5032,7 +4953,8 @@ read-line discards newline
 ```
 
 
-#### Copy File Remove File Rename File
+## Copy File Remove File Rename File
+
 ```common-lisp
 ;; common-lisp
 (cl-fad:copy-file #P"/tmp/foo"  #P"/tmp/bar")
@@ -5059,7 +4981,8 @@ read-line discards newline
 ```
 
 
-#### Create Symlink Symlink Test Get Target
+## Create Symlink Symlink Test Get Target
+
 ```common-lisp
 ;; common-lisp
 (osicat:make-link "/tmp/hosts" :target "/etc/hosts")
@@ -5080,7 +5003,8 @@ read-line discards newline
 ```
 
 
-#### Temporary File
+## Temporary File
+
 ```common-lisp
 ;; common-lisp
 
@@ -5101,7 +5025,8 @@ read-line discards newline
 ```
 
 
-#### Build Pathname
+## Build Pathname
+
 ```common-lisp
 ;; common-lisp
 (make-pathname  :directory '(:absolute "etc")  :name "hosts")
@@ -5124,7 +5049,8 @@ read-line discards newline
 ```
 
 
-#### Dirname And Basename
+## Dirname And Basename
+
 ```common-lisp
 ;; common-lisp
 (pathname-directory #P"/etc/hosts")
@@ -5147,7 +5073,8 @@ read-line discards newline
 ```
 
 
-#### Absolute Pathname
+## Absolute Pathname
+
 ```common-lisp
 ;; common-lisp
 
@@ -5166,7 +5093,8 @@ read-line discards newline
 ```
 
 
-#### Iterate Over Directory By File
+## Iterate Over Directory By File
+
 ```common-lisp
 ;; common-lisp
 (dolist (file (osicat:list-directory "/tmp")) (format t "~a~%" file))
@@ -5187,7 +5115,8 @@ read-line discards newline
 ```
 
 
-#### Make Directory
+## Make Directory
+
 ```common-lisp
 ;; common-lisp
 
@@ -5208,7 +5137,8 @@ creates parents if 2nd arg non-nil:
 ```
 
 
-#### Recursive Copy
+## Recursive Copy
+
 ```common-lisp
 ;; common-lisp
 
@@ -5227,7 +5157,8 @@ creates parents if 2nd arg non-nil:
 ```
 
 
-#### Remove Empty Directory
+## Remove Empty Directory
+
 ```common-lisp
 ;; common-lisp
 (delete-directory "/tmp/foo.d")
@@ -5246,7 +5177,8 @@ creates parents if 2nd arg non-nil:
 ```
 
 
-#### Remove Directory And Contents
+## Remove Directory And Contents
+
 ```common-lisp
 ;; common-lisp
 (osicat:delete-directory-and-files "/tmp/foo.d")
@@ -5265,7 +5197,8 @@ creates parents if 2nd arg non-nil:
 ```
 
 
-#### Directory Test
+## Directory Test
+
 ```common-lisp
 ;; common-lisp
 (osicat:directory-exists-p #P"/etc")
@@ -5284,7 +5217,8 @@ creates parents if 2nd arg non-nil:
 ```
 
 
-#### Command Line Arguments
+## Command Line Arguments
+
 ```common-lisp
 ;; common-lisp
 *posix-argv*
@@ -5304,7 +5238,8 @@ command-line-args or argv
 ```
 
 
-#### Program Name
+## Program Name
+
 ```common-lisp
 ;; common-lisp
 
@@ -5323,7 +5258,8 @@ command-line-args or argv
 ```
 
 
-#### Environment Variables
+## Environment Variables
+
 ```common-lisp
 ;; common-lisp
 (posix-getenv "HOME")
@@ -5342,7 +5278,8 @@ command-line-args or argv
 ```
 
 
-#### User Id And Name
+## User Id And Name
+
 ```common-lisp
 ;; common-lisp
 
@@ -5361,8 +5298,9 @@ command-line-args or argv
 ```
 
 
-#### Exit
+## Exit
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -5380,7 +5318,8 @@ command-line-args or argv
 ```
 
 
-#### External Command
+## External Command
+
 ```common-lisp
 ;; common-lisp
 (run-program "ls" '( "/etc"))
@@ -5400,7 +5339,8 @@ command-line-args or argv
 ```
 
 
-#### Command Substitution
+## Command Substitution
+
 ```common-lisp
 ;; common-lisp
 
@@ -5419,7 +5359,8 @@ command-line-args or argv
 ```
 
 
-#### Complete Example
+## Complete Example
+
 ```common-lisp
 ;; common-lisp
 
@@ -5444,7 +5385,8 @@ $ java -cp clojure.jar:. clojure.main
 ```
 
 
-#### Compile Library
+## Compile Library
+
 ```common-lisp
 ;; common-lisp
 (compile-file "a.lisp")
@@ -5463,7 +5405,8 @@ $ emacs -batch -Q -L . \  -f batch-byte-compile a.el
 ```
 
 
-#### Load Library
+## Load Library
+
 ```common-lisp
 ;; common-lisp
 (load "a.lisp")
@@ -5482,7 +5425,8 @@ $ emacs -batch -Q -L . \  -f batch-byte-compile a.el
 ```
 
 
-#### Load Library In Subdirectory
+## Load Library In Subdirectory
+
 ```common-lisp
 ;; common-lisp
 (load "b/a.lisp")
@@ -5501,7 +5445,8 @@ $ emacs -batch -Q -L . \  -f batch-byte-compile a.el
 ```
 
 
-#### Hot Patch
+## Hot Patch
+
 ```common-lisp
 ;; common-lisp
 (load "a.lisp")
@@ -5520,7 +5465,8 @@ none
 ```
 
 
-#### Load Error
+## Load Error
+
 ```common-lisp
 ;; common-lisp
 raises sb-int:simple-file-error
@@ -5539,7 +5485,8 @@ raises file-err
 ```
 
 
-#### Library Path
+## Library Path
+
 ```common-lisp
 ;; common-lisp
 contains working directory at startup
@@ -5560,7 +5507,8 @@ same as path used by java VM
 ```
 
 
-#### Library Path Environment Variable
+## Library Path Environment Variable
+
 ```common-lisp
 ;; common-lisp
 none
@@ -5579,7 +5527,8 @@ EMACSLOADPATH
 ```
 
 
-#### Library Path Command Line Option
+## Library Path Command Line Option
+
 ```common-lisp
 ;; common-lisp
 none
@@ -5598,7 +5547,8 @@ $ emacs -L /foo/bar
 ```
 
 
-#### Namespace Declaration
+## Namespace Declaration
+
 ```common-lisp
 ;; common-lisp
 (defpackage :foo)
@@ -5617,7 +5567,8 @@ No namespaces; a common convention is to use a prefix on all identifiers in a li
 ```
 
 
-#### Subnamespace Declaration
+## Subnamespace Declaration
+
 ```common-lisp
 ;; common-lisp
 none
@@ -5637,7 +5588,8 @@ none
 ```
 
 
-#### Namespace Separator
+## Namespace Separator
+
 ```common-lisp
 ;; common-lisp
 :
@@ -5656,7 +5608,8 @@ none
 ```
 
 
-#### Import Definitions
+## Import Definitions
+
 ```common-lisp
 ;; common-lisp
 ; set current *package* to foo and import symbol twiddle from bar:
@@ -5676,7 +5629,8 @@ none
 ```
 
 
-#### Import All Definitions In Namespace
+## Import All Definitions In Namespace
+
 ```common-lisp
 ;; common-lisp
 ; set current *package* to foo and import symbols from bar:
@@ -5696,7 +5650,8 @@ none
 ```
 
 
-#### Namespace Shadow Avoidance
+## Namespace Shadow Avoidance
+
 ```common-lisp
 ;; common-lisp
 
@@ -5715,7 +5670,8 @@ none
 ```
 
 
-#### Identifier Shadow Avoidance
+## Identifier Shadow Avoidance
+
 ```common-lisp
 ;; common-lisp
 
@@ -5734,7 +5690,8 @@ none
 ```
 
 
-#### Package Manager Help
+## Package Manager Help
+
 ```common-lisp
 ;; common-lisp
 
@@ -5755,7 +5712,8 @@ $ raco pkg install --help
 ```
 
 
-#### List Installed Packages
+## List Installed Packages
+
 ```common-lisp
 ;; common-lisp
 
@@ -5774,7 +5732,8 @@ M-x list packages
 ```
 
 
-#### Search Packages
+## Search Packages
+
 ```common-lisp
 ;; common-lisp
 (ql:system-apropos "time")
@@ -5793,7 +5752,8 @@ M-x list-packages
 ```
 
 
-#### Install Package
+## Install Package
+
 ```common-lisp
 ;; common-lisp
 ; install quicklisp
@@ -5814,7 +5774,8 @@ Use M-x list-packages to bring up the package menu; i to select a package to ins
 ```
 
 
-#### Remove Package
+## Remove Package
+
 ```common-lisp
 ;; common-lisp
 
@@ -5833,7 +5794,8 @@ In the package menu, use d to select a package to uninstall and x to uninstall i
 ```
 
 
-#### Define Class
+## Define Class
+
 ```common-lisp
 ;; common-lisp
 (defclass rectangle ()  (    (height      :accessor rectangle-height      :initarg :height)    (width      :accessor rectangle-width      :initarg :width)))
@@ -5854,7 +5816,8 @@ public class Rectangle {  public float height;  public float width;  publi
 ```
 
 
-#### Make Instance
+## Make Instance
+
 ```common-lisp
 ;; common-lisp
 (make-instance 'rectangle  :height 3  :width 7)
@@ -5874,7 +5837,8 @@ public class Rectangle {  public float height;  public float width;  publi
 ```
 
 
-#### Read Attribute
+## Read Attribute
+
 ```common-lisp
 ;; common-lisp
 (rectangle-height rect)
@@ -5893,7 +5857,8 @@ public class Rectangle {  public float height;  public float width;  publi
 ```
 
 
-#### Write Attribute
+## Write Attribute
+
 ```common-lisp
 ;; common-lisp
 (setf (rectangle-height rect) 4)
@@ -5912,7 +5877,8 @@ public class Rectangle {  public float height;  public float width;  publi
 ```
 
 
-#### Define Method
+## Define Method
+
 ```common-lisp
 ;; common-lisp
 (defmethod area ((figure rectangle))  (* (rectangle-height figure)    (rectangle-width figure)))
@@ -5932,7 +5898,8 @@ public class Rectangle {  public float height;  public float width;  publi
 ```
 
 
-#### Invoke Method
+## Invoke Method
+
 ```common-lisp
 ;; common-lisp
 (area rect)
@@ -5951,7 +5918,8 @@ public class Rectangle {  public float height;  public float width;  publi
 ```
 
 
-#### Universal Superclass
+## Universal Superclass
+
 ```common-lisp
 ;; common-lisp
 standard-object t
@@ -5970,7 +5938,8 @@ Object
 ```
 
 
-#### Multiple Inheritance
+## Multiple Inheritance
+
 ```common-lisp
 ;; common-lisp
 yes
@@ -5989,7 +5958,8 @@ only one direct superclass; can implement multiple interfaces
 ```
 
 
-#### Backquote And Comma
+## Backquote And Comma
+
 ```common-lisp
 ;; common-lisp
 (setq op '+)
@@ -6013,7 +5983,8 @@ only one direct superclass; can implement multiple interfaces
 ```
 
 
-#### Defmacro
+## Defmacro
+
 ```common-lisp
 ;; common-lisp
 (defmacro rpn (arg1 arg2 op)  (list op arg1 arg2))
@@ -6032,7 +6003,8 @@ only one direct superclass; can implement multiple interfaces
 ```
 
 
-#### Defmacro W Backquote
+## Defmacro W Backquote
+
 ```common-lisp
 ;; common-lisp
 (defmacro rpn (arg1 arg2 op)  `(,op ,arg1 ,arg2))
@@ -6051,7 +6023,8 @@ only one direct superclass; can implement multiple interfaces
 ```
 
 
-#### Macro Predicate
+## Macro Predicate
+
 ```common-lisp
 ;; common-lisp
 (macro-function rpn)
@@ -6070,7 +6043,8 @@ none
 ```
 
 
-#### Macroexpand
+## Macroexpand
+
 ```common-lisp
 ;; common-lisp
 (macroexpand ’(rpn 1 2 +))
@@ -6089,7 +6063,8 @@ none
 ```
 
 
-#### Splice Quote
+## Splice Quote
+
 ```common-lisp
 ;; common-lisp
 (defmacro add ( &rest args )  `(+ ,@args))
@@ -6108,7 +6083,8 @@ none
 ```
 
 
-#### Recursive Macro
+## Recursive Macro
+
 ```common-lisp
 ;; common-lisp
 (defmacro add (a &rest b)  `(if (null ',b)    (+ ,a)    (+ ,a (add ,@b))))
@@ -6127,7 +6103,8 @@ none
 ```
 
 
-#### Hygienic
+## Hygienic
+
 ```common-lisp
 ;; common-lisp
 no
@@ -6146,7 +6123,8 @@ no
 ```
 
 
-#### Local Values
+## Local Values
+
 ```common-lisp
 ;; common-lisp
 (defmacro square-sum (x y)  (let ((sum (gensym)))    `(let ((,sum (+ ,x ,y)))      (* ,sum ,sum))))
@@ -6165,7 +6143,8 @@ no
 ```
 
 
-#### Inspect Type
+## Inspect Type
+
 ```common-lisp
 ;; common-lisp
 (type-of '(1 2 3))
@@ -6190,7 +6169,8 @@ no
 ```
 
 
-#### Instance Of
+## Instance Of
+
 ```common-lisp
 ;; common-lisp
 
@@ -6209,7 +6189,8 @@ instance?
 ```
 
 
-#### Basic Types
+## Basic Types
+
 ```common-lisp
 ;; common-lisp
 logical and numeric:
@@ -6232,7 +6213,8 @@ compiled-function function package pathname random-state stream
 ```
 
 
-#### Sequence Data Types
+## Sequence Data Types
+
 ```common-lisp
 ;; common-lisp
 list vector
@@ -6251,7 +6233,8 @@ list vector
 ```
 
 
-#### Get Docstring
+## Get Docstring
+
 ```common-lisp
 ;; common-lisp
 (describe #'mapcar)
@@ -6270,7 +6253,8 @@ none
 ```
 
 
-#### Define Function With Docstring
+## Define Function With Docstring
+
 ```common-lisp
 ;; common-lisp
 (defun add (x y)  "add x and y"  (+ x y))
@@ -6289,7 +6273,8 @@ none
 ```
 
 
-#### Apropos And Documentation Search
+## Apropos And Documentation Search
+
 ```common-lisp
 ;; common-lisp
 none
@@ -6309,8 +6294,9 @@ none
 ```
 
 
-#### New
+## New
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -6329,8 +6315,9 @@ none
 ```
 
 
-#### Method
+## Method
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -6351,7 +6338,8 @@ none
 ```
 
 
-#### Class Method
+## Class Method
+
 ```common-lisp
 ;; common-lisp
 
@@ -6370,8 +6358,9 @@ none
 ```
 
 
-#### Chain
+## Chain
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -6389,8 +6378,9 @@ none
 ```
 
 
-#### Import
+## Import
 ```common-lisp
+
 ;; common-lisp
 
 ```
@@ -6409,7 +6399,8 @@ none
 ```
 
 
-#### To Java Array
+## To Java Array
+
 ```common-lisp
 ;; common-lisp
 
